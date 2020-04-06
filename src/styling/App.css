@@ -1,0 +1,14 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.wrapper {
+  text-align: center;
+}
+
+.header {
+  text-align: center;
+  padding-bottom: 20px;
+}
