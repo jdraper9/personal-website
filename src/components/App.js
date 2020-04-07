@@ -1,6 +1,6 @@
 import React from 'react';
 import '../styling/App.css';
-import SVG from './SVG.js';
+import Home from './Home.js';
 
 class App extends React.Component {
   render() {
@@ -8,7 +8,7 @@ class App extends React.Component {
       <div>
         <h1 className="header">Hello</h1>
         <div className="wrapper">
-          <SVG />
+          <Home />
         </div>
       </div>
     );

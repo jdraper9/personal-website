@@ -1,0 +1,61 @@
+<svg width="500" height="500" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="planets_3">
+<g id="outer">
+<g id="outer-ring-3">
+<circle cx="253.5" cy="450.5" r="47.3" stroke="black" stroke-opacity="0.05" stroke-width="0.4"/>
+<circle cx="253.5" cy="450.5" r="47.3" stroke="black" stroke-opacity="0.05" stroke-width="0.4"/>
+</g>
+<circle id="out-sat-3" cx="297.5" cy="468.5" r="1.5" fill="#3D413E"/>
+<g id="outer-ring-2">
+<circle cx="253" cy="450" r="34.8" stroke="black" stroke-opacity="0.05" stroke-width="0.4"/>
+<circle cx="253" cy="450" r="34.8" stroke="black" stroke-opacity="0.05" stroke-width="0.4"/>
+</g>
+<circle id="out-sat-2" cx="221.5" cy="464.5" r="1.5" fill="#3D413E"/>
+<g id="outer-ring1">
+<circle cx="253" cy="450" r="24.8" stroke="black" stroke-opacity="0.05" stroke-width="0.4"/>
+<circle cx="253" cy="450" r="24.8" stroke="black" stroke-opacity="0.05" stroke-width="0.4"/>
+</g>
+<circle id="out-sat-1" cx="253.5" cy="425.5" r="1.5" fill="#3D413E"/>
+<circle id="blue" cx="253" cy="450" r="18" fill="#4E82E9"/>
+<circle id="outer-orbit" cx="250" cy="250" r="199.5" stroke="black" stroke-opacity="0.25"/>
+</g>
+<g id="mid">
+<g id="mid-ring-3">
+<circle cx="249.5" cy="126.5" r="36.3" stroke="black" stroke-opacity="0.05" stroke-width="0.4"/>
+<circle cx="249.5" cy="126.5" r="36.3" stroke="black" stroke-opacity="0.05" stroke-width="0.4"/>
+</g>
+<circle id="mid-sat-3" cx="249.5" cy="90.5" r="1.5" fill="#3D413E"/>
+<g id="mid-ring-2">
+<circle cx="249.5" cy="125.5" r="32.3" stroke="black" stroke-opacity="0.05" stroke-width="0.4"/>
+<circle cx="249.5" cy="125.5" r="32.3" stroke="black" stroke-opacity="0.05" stroke-width="0.4"/>
+</g>
+<circle id="mid-sat-2" cx="281.5" cy="126.5" r="1.5" fill="#3D413E"/>
+<g id="mid-ring-1">
+<circle cx="250" cy="126" r="22.8" stroke="black" stroke-opacity="0.05" stroke-width="0.4"/>
+<circle cx="250" cy="126" r="22.8" stroke="black" stroke-opacity="0.05" stroke-width="0.4"/>
+</g>
+<circle id="mid-sat-1" cx="227.5" cy="126.5" r="1.5" fill="#3D413E"/>
+<circle id="green" cx="249" cy="125" r="16" fill="#59BF76"/>
+<circle id="middle-orbit" cx="250" cy="250" r="124.5" stroke="black" stroke-opacity="0.25"/>
+</g>
+<g id="center">
+<g id="in-ring-3">
+<circle cx="250" cy="300" r="34.8" stroke="black" stroke-opacity="0.05" stroke-width="0.4"/>
+<circle cx="250" cy="300" r="34.8" stroke="black" stroke-opacity="0.05" stroke-width="0.4"/>
+</g>
+<circle id="in-sat-3" cx="215.5" cy="298.5" r="1.5" fill="#3D413E"/>
+<g id="in-ring-2">
+<circle cx="250" cy="300" r="29.8" stroke="black" stroke-opacity="0.05" stroke-width="0.4"/>
+<circle cx="250" cy="300" r="29.8" stroke="black" stroke-opacity="0.05" stroke-width="0.4"/>
+</g>
+<circle id="in-sat-2" cx="250.5" cy="329.5" r="1.5" fill="#3D413E"/>
+<g id="in-ring-1">
+<circle cx="250" cy="300" r="19.8" stroke="black" stroke-opacity="0.05" stroke-width="0.4"/>
+<circle cx="250" cy="300" r="19.8" stroke="black" stroke-opacity="0.05" stroke-width="0.4"/>
+</g>
+<circle id="in-sat-1" cx="263.5" cy="285.5" r="1.5" fill="#3D413E"/>
+<circle id="yellow" cx="250" cy="300" r="15" fill="#DDE040"/>
+<circle id="inner-orbit" cx="250" cy="250" r="49.5" stroke="black" stroke-opacity="0.25"/>
+</g>
+</g>
+</svg>
