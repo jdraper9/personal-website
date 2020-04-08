@@ -3,7 +3,6 @@ import { PI, satellite_init } from '../constants';
 
 class Home extends React.Component {
   intervlID = 0;
-
   constructor(props) {
     super(props);
 
@@ -11,6 +10,7 @@ class Home extends React.Component {
 
     this.state = {
       rate: 1,
+      selected: null,
       outer: {
         r: 200,
         theta: 1.5 * PI,
@@ -39,24 +39,19 @@ class Home extends React.Component {
     this.intervalID = setInterval(this.rotate, this.state.rate);
   }
 
+  // in svg send object with rate, color, etc
   slow = (ring) => {
-    var newRate = null;
-    if (ring === 'outer') {
-      newRate = 60;
-    } else if (ring === 'mid') {
-      newRate = 70;
-    } else if (ring === 'center') {
-      newRate = 90;
-    }
-
-    this.setState({ ...this.state, rate: newRate }, () => {
-      clearInterval(this.intervalID);
-      this.intervalID = setInterval(this.rotate, this.state.rate);
-    });
+    this.setState(
+      { ...this.state, rate: ring.rate, selected: ring.title },
+      () => {
+        clearInterval(this.intervalID);
+        this.intervalID = setInterval(this.rotate, this.state.rate);
+      }
+    );
   };
 
   fast = () => {
-    this.setState({ ...this.state, rate: 1 }, () => {
+    this.setState({ ...this.state, rate: 1, selected: null }, () => {
       clearInterval(this.intervalID);
       this.intervalID = setInterval(this.rotate, this.state.rate);
     });
@@ -133,7 +128,7 @@ class Home extends React.Component {
 
           <g
             id="outer"
-            onMouseEnter={() => this.slow('outer')}
+            onMouseEnter={() => this.slow({ title: 'outer', rate: 60 })}
             onMouseLeave={this.fast}
           >
             <g id="outer-ring-3">
@@ -218,7 +213,7 @@ class Home extends React.Component {
               cx="250"
               cy="250"
               r="199.5"
-              stroke="black"
+              stroke={this.state.selected === 'outer' ? 'blue' : 'black'}
               strokeOpacity="0.25"
             />
           </g>
@@ -227,7 +222,7 @@ class Home extends React.Component {
 
           <g
             id="mid"
-            onMouseEnter={() => this.slow('mid')}
+            onMouseEnter={() => this.slow({ title: 'mid', rate: 70 })}
             onMouseLeave={this.fast}
           >
             <g id="mid-ring-3">
@@ -312,7 +307,7 @@ class Home extends React.Component {
               cx="250"
               cy="250"
               r="124.5"
-              stroke="black"
+              stroke={this.state.selected === 'mid' ? 'green' : 'black'}
               strokeOpacity="0.25"
             />
           </g>
@@ -321,7 +316,7 @@ class Home extends React.Component {
 
           <g
             id="center"
-            onMouseEnter={() => this.slow('center')}
+            onMouseEnter={() => this.slow({ title: 'center', rate: 90 })}
             onMouseLeave={this.fast}
           >
             <g id="in-ring-3">
@@ -406,7 +401,7 @@ class Home extends React.Component {
               cx="250"
               cy="250"
               r="49.5"
-              stroke="black"
+              stroke={this.state.selected === 'center' ? 'purple' : 'black'}
               strokeOpacity="0.25"
             />
           </g>
