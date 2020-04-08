@@ -2,6 +2,8 @@ import React from 'react';
 import { PI, satellite_init } from '../constants';
 
 class Home extends React.Component {
+  intervlID = 0;
+
   constructor(props) {
     super(props);
 
@@ -34,8 +36,31 @@ class Home extends React.Component {
   }
 
   componentDidMount() {
-    setInterval(this.rotate, this.state.rate);
+    this.intervalID = setInterval(this.rotate, this.state.rate);
   }
+
+  slow = (ring) => {
+    var newRate = null;
+    if (ring === 'outer') {
+      newRate = 60;
+    } else if (ring === 'mid') {
+      newRate = 70;
+    } else if (ring === 'center') {
+      newRate = 90;
+    }
+
+    this.setState({ ...this.state, rate: newRate }, () => {
+      clearInterval(this.intervalID);
+      this.intervalID = setInterval(this.rotate, this.state.rate);
+    });
+  };
+
+  fast = () => {
+    this.setState({ ...this.state, rate: 1 }, () => {
+      clearInterval(this.intervalID);
+      this.intervalID = setInterval(this.rotate, this.state.rate);
+    });
+  };
 
   rotate = () => {
     this.setState({
@@ -104,7 +129,13 @@ class Home extends React.Component {
         xmlns="http://www.w3.org/2000/svg"
       >
         <g id="planets_3">
-          <g id="outer">
+          {/*  */}
+
+          <g
+            id="outer"
+            onMouseEnter={() => this.slow('outer')}
+            onMouseLeave={this.fast}
+          >
             <g id="outer-ring-3">
               <circle
                 cx={this.state.outer.coordinates.x}
@@ -191,7 +222,14 @@ class Home extends React.Component {
               strokeOpacity="0.25"
             />
           </g>
-          <g id="mid">
+
+          {/*  */}
+
+          <g
+            id="mid"
+            onMouseEnter={() => this.slow('mid')}
+            onMouseLeave={this.fast}
+          >
             <g id="mid-ring-3">
               <circle
                 cx={this.state.middle.coordinates.x}
@@ -278,7 +316,14 @@ class Home extends React.Component {
               strokeOpacity="0.25"
             />
           </g>
-          <g id="center">
+
+          {/*  */}
+
+          <g
+            id="center"
+            onMouseEnter={() => this.slow('center')}
+            onMouseLeave={this.fast}
+          >
             <g id="in-ring-3">
               <circle
                 cx={this.state.inner.coordinates.x}
