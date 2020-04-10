@@ -11,6 +11,8 @@ class Home extends React.Component {
     this.state = {
       rate: 1,
       selected: null,
+      clickedAndSelected: false,
+      zoomBox: '0 0 500 500',
       outer: {
         r: 200,
         theta: 1.5 * PI,
@@ -39,7 +41,7 @@ class Home extends React.Component {
     this.intervalID = setInterval(this.rotate, this.state.rate);
   }
 
-  // in svg send object with rate, color, etc
+  // onHover, slow rotation speed
   slow = (ring) => {
     this.setState(
       { ...this.state, rate: ring.rate, selected: ring.title },
@@ -50,11 +52,32 @@ class Home extends React.Component {
     );
   };
 
+  // offHover, resume original speed
   fast = () => {
     this.setState({ ...this.state, rate: 1, selected: null }, () => {
       clearInterval(this.intervalID);
       this.intervalID = setInterval(this.rotate, this.state.rate);
     });
+  };
+
+  // when a planet group is selected, zoom, etc
+  select = () => {
+    let clickedAndSelected = this.state.selected !== null ? true : false;
+    var viewBoxString = '0 0 500 500';
+    // group of planet and satellites (outer, middle, inner) need coordinates, and largest radius of satellite
+    if (clickedAndSelected) {
+      let selectedOrbit = this.state[this.state.selected];
+      let largestSatRadius = Math.round(selectedOrbit.satellites[3].r);
+      let x = Math.round(selectedOrbit.coordinates.x),
+        y = Math.round(selectedOrbit.coordinates.y);
+      let viewMinX = x - (largestSatRadius + 10),
+        viewMinY = y - (largestSatRadius + 10),
+        width = 2 * largestSatRadius + 20,
+        height = 2 * largestSatRadius + 20;
+
+      viewBoxString = `${viewMinX} ${viewMinY} ${width} ${height} `;
+    }
+    this.setState({ clickedAndSelected, zoomBox: viewBoxString });
   };
 
   rotate = () => {
@@ -71,8 +94,11 @@ class Home extends React.Component {
   updateSpheres = (sphere) => {
     let fractionOfCircle = sphere.period,
       thetaIncrement = (2 * PI) / fractionOfCircle,
-      newTheta = sphere.theta - thetaIncrement,
       r = sphere.r;
+
+    let newTheta = this.state.clickedAndSelected
+      ? sphere.theta
+      : sphere.theta - thetaIncrement;
 
     let x = r * Math.cos(newTheta),
       y = r * Math.sin(newTheta);
@@ -117,11 +143,12 @@ class Home extends React.Component {
     return (
       <svg
         // seems like you can increase this and it scales
-        width="500"
-        height="500"
-        viewBox="0 0 500 500"
+        width="700"
+        height="700"
+        viewBox={this.state.zoomBox}
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
+        onClick={this.select}
       >
         <g id="planets_3">
           {/*  */}
@@ -201,13 +228,7 @@ class Home extends React.Component {
               fill="gray"
             />
             {/* outer circle */}
-            <circle
-              id="outer"
-              cx={this.state.outer.coordinates.x}
-              cy={this.state.outer.coordinates.y}
-              r="10"
-              fill="#3D413E"
-            />
+
             <circle
               id="outer-orbit"
               cx="250"
@@ -216,13 +237,20 @@ class Home extends React.Component {
               stroke={this.state.selected === 'outer' ? 'blue' : 'black'}
               strokeOpacity="0.25"
             />
+            <circle
+              id="outer"
+              cx={this.state.outer.coordinates.x}
+              cy={this.state.outer.coordinates.y}
+              r="10"
+              fill="#3D413E"
+            />
           </g>
 
           {/*  */}
 
           <g
             id="mid"
-            onMouseEnter={() => this.slow({ title: 'mid', rate: 70 })}
+            onMouseEnter={() => this.slow({ title: 'middle', rate: 70 })}
             onMouseLeave={this.fast}
           >
             <g id="mid-ring-3">
@@ -296,19 +324,19 @@ class Home extends React.Component {
             />
             {/* middle  */}
             <circle
+              id="middle-orbit"
+              cx="250"
+              cy="250"
+              r="124.5"
+              stroke={this.state.selected === 'middle' ? 'green' : 'black'}
+              strokeOpacity="0.25"
+            />
+            <circle
               id="middle"
               cx={this.state.middle.coordinates.x}
               cy={this.state.middle.coordinates.y}
               r="8"
               fill="#3D413E"
-            />
-            <circle
-              id="middle-orbit"
-              cx="250"
-              cy="250"
-              r="124.5"
-              stroke={this.state.selected === 'mid' ? 'green' : 'black'}
-              strokeOpacity="0.25"
             />
           </g>
 
@@ -316,7 +344,7 @@ class Home extends React.Component {
 
           <g
             id="center"
-            onMouseEnter={() => this.slow({ title: 'center', rate: 90 })}
+            onMouseEnter={() => this.slow({ title: 'inner', rate: 90 })}
             onMouseLeave={this.fast}
           >
             <g id="in-ring-3">
@@ -390,19 +418,19 @@ class Home extends React.Component {
             />
             {/* inner */}
             <circle
+              id="inner-orbit"
+              cx="250"
+              cy="250"
+              r="49.5"
+              stroke={this.state.selected === 'inner' ? 'purple' : 'black'}
+              strokeOpacity="0.25"
+            />
+            <circle
               id="inner"
               cx={this.state.inner.coordinates.x}
               cy={this.state.inner.coordinates.y}
               r="6"
               fill="#3D413E"
-            />
-            <circle
-              id="inner-orbit"
-              cx="250"
-              cy="250"
-              r="49.5"
-              stroke={this.state.selected === 'center' ? 'purple' : 'black'}
-              strokeOpacity="0.25"
             />
           </g>
         </g>
