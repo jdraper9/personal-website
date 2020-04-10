@@ -137,7 +137,7 @@ class Home extends React.Component {
                 cy={this.state.outer.coordinates.y}
                 r="47.3"
                 stroke="black"
-                strokeOpacity="0.05"
+                strokeOpacity="0.13"
                 strokeWidth="0.4"
               />
             </g>
@@ -160,7 +160,7 @@ class Home extends React.Component {
                 cy={this.state.outer.coordinates.y}
                 r="34.8"
                 stroke="black"
-                strokeOpacity="0.05"
+                strokeOpacity="00.13"
                 strokeWidth="0.4"
               />
             </g>
@@ -183,7 +183,7 @@ class Home extends React.Component {
                 cy={this.state.outer.coordinates.y}
                 r="24.8"
                 stroke="black"
-                strokeOpacity="0.05"
+                strokeOpacity="00.13"
                 strokeWidth="0.4"
               />
             </g>
@@ -231,7 +231,7 @@ class Home extends React.Component {
                 cy={this.state.middle.coordinates.y}
                 r="36.3"
                 stroke="black"
-                strokeOpacity="0.05"
+                strokeOpacity="00.13"
                 strokeWidth="0.4"
               />
             </g>
@@ -254,7 +254,7 @@ class Home extends React.Component {
                 cy={this.state.middle.coordinates.y}
                 r="32.3"
                 stroke="black"
-                strokeOpacity="0.05"
+                strokeOpacity="00.13"
                 strokeWidth="0.4"
               />
             </g>
@@ -277,7 +277,7 @@ class Home extends React.Component {
                 cy={this.state.middle.coordinates.y}
                 r="22.8"
                 stroke="black"
-                strokeOpacity="0.05"
+                strokeOpacity="00.13"
                 strokeWidth="0.4"
               />
             </g>
@@ -325,7 +325,7 @@ class Home extends React.Component {
                 cy={this.state.inner.coordinates.y}
                 r="34.8"
                 stroke="black"
-                strokeOpacity="0.05"
+                strokeOpacity="00.13"
                 strokeWidth="0.4"
               />
             </g>
@@ -348,7 +348,7 @@ class Home extends React.Component {
                 cy={this.state.inner.coordinates.y}
                 r="29.8"
                 stroke="black"
-                strokeOpacity="0.05"
+                strokeOpacity="00.13"
                 strokeWidth="0.4"
               />
             </g>
@@ -371,7 +371,7 @@ class Home extends React.Component {
                 cy={this.state.inner.coordinates.y}
                 r="19.8"
                 stroke="black"
-                strokeOpacity="0.05"
+                strokeOpacity="00.13"
                 strokeWidth="0.4"
               />
             </g>
