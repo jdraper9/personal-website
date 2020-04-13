@@ -1,0 +1,31 @@
+<svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="intro-and-sun">
+<g id="sun">
+<circle cx="30" cy="30" r="30" fill="url(#paint0_radial)"/>
+<circle cx="30" cy="30" r="29.8" stroke="black" stroke-opacity="0.05" stroke-width="0.4"/>
+</g>
+<g id="intro-sats">
+<circle id="teeny-tiny9" cx="45.5" cy="48.5" r="1.5" fill="#3D413E"/>
+<circle id="teeny-tiny8" cx="29.5" cy="43.5" r="1.5" fill="#3D413E"/>
+<circle id="teeny-tiny7" cx="50.5" cy="25.5" r="1.5" fill="#3D413E"/>
+<circle id="teeny-tiny6" cx="6.5" cy="26.5" r="1.5" fill="#3D413E"/>
+<circle id="teeny-tiny5" cx="14.5" cy="16.5" r="1.5" fill="#3D413E"/>
+<circle id="teeny-tiny4" cx="43.5" cy="13.5" r="1.5" fill="#3D413E"/>
+<circle id="teeny-tiny3" cx="34.5" cy="26.5" r="1.5" fill="#3D413E"/>
+<circle id="teeny-tiny2" cx="16.5" cy="48.5" r="1.5" fill="#3D413E"/>
+<circle id="teeny-tiny1" cx="24.5" cy="29.5" r="1.5" fill="#3D413E"/>
+</g>
+<g id="intro-planets">
+<circle id="yellow" cx="15.5" cy="35.5" r="5.5" fill="#A54F00"/>
+<circle id="blue" cx="42" cy="37" r="5" fill="#4074B1"/>
+<circle id="green" cx="29" cy="14" r="6" fill="#177431"/>
+</g>
+</g>
+<defs>
+<radialGradient id="paint0_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(30 30) rotate(90) scale(30)">
+<stop stop-color="#FFB03A"/>
+<stop offset="1" stop-color="#F50C0C" stop-opacity="0"/>
+<stop offset="1" stop-color="#FFF73A" stop-opacity="0"/>
+</radialGradient>
+</defs>
+</svg>

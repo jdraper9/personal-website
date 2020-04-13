@@ -1,0 +1,71 @@
+<svg width="500" height="500" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="planets_4">
+<g id="outer">
+<g id="outer-ring-3">
+<circle cx="253.5" cy="450.5" r="47.3" stroke="black" stroke-opacity="0.05" stroke-width="0.4"/>
+<circle cx="253.5" cy="450.5" r="47.3" stroke="black" stroke-opacity="0.05" stroke-width="0.4"/>
+</g>
+<circle id="out-sat-3" cx="297.5" cy="468.5" r="1.5" fill="#3D413E"/>
+<g id="outer-ring-2">
+<circle cx="253" cy="450" r="34.8" stroke="black" stroke-opacity="0.05" stroke-width="0.4"/>
+<circle cx="253" cy="450" r="34.8" stroke="black" stroke-opacity="0.05" stroke-width="0.4"/>
+</g>
+<circle id="out-sat-2" cx="221.5" cy="464.5" r="1.5" fill="#3D413E"/>
+<g id="outer-ring1">
+<circle cx="253" cy="450" r="24.8" stroke="black" stroke-opacity="0.05" stroke-width="0.4"/>
+<circle cx="253" cy="450" r="24.8" stroke="black" stroke-opacity="0.05" stroke-width="0.4"/>
+</g>
+<circle id="out-sat-1" cx="253.5" cy="425.5" r="1.5" fill="#3D413E"/>
+<circle id="blue" cx="253" cy="450" r="18" fill="#4074B1"/>
+<circle id="outer-orbit" cx="250" cy="250" r="199.5" stroke="black" stroke-opacity="0.25"/>
+</g>
+<g id="mid">
+<g id="mid-ring-3">
+<circle cx="249.5" cy="126.5" r="36.3" stroke="black" stroke-opacity="0.05" stroke-width="0.4"/>
+<circle cx="249.5" cy="126.5" r="36.3" stroke="black" stroke-opacity="0.05" stroke-width="0.4"/>
+</g>
+<circle id="mid-sat-3" cx="249.5" cy="90.5" r="1.5" fill="#3D413E"/>
+<g id="mid-ring-2">
+<circle cx="249.5" cy="125.5" r="32.3" stroke="black" stroke-opacity="0.05" stroke-width="0.4"/>
+<circle cx="249.5" cy="125.5" r="32.3" stroke="black" stroke-opacity="0.05" stroke-width="0.4"/>
+</g>
+<circle id="mid-sat-2" cx="281.5" cy="126.5" r="1.5" fill="#3D413E"/>
+<g id="mid-ring-1">
+<circle cx="250" cy="126" r="22.8" stroke="black" stroke-opacity="0.05" stroke-width="0.4"/>
+<circle cx="250" cy="126" r="22.8" stroke="black" stroke-opacity="0.05" stroke-width="0.4"/>
+</g>
+<circle id="mid-sat-1" cx="227.5" cy="126.5" r="1.5" fill="#3D413E"/>
+<circle id="green" cx="249" cy="125" r="16" fill="#177431"/>
+<circle id="middle-orbit" cx="250" cy="250" r="124.5" stroke="black" stroke-opacity="0.25"/>
+</g>
+<g id="intro-and-sun">
+<g id="sun">
+<circle cx="250" cy="250" r="30" fill="url(#paint0_radial)"/>
+<circle cx="250" cy="250" r="29.8" stroke="black" stroke-opacity="0.05" stroke-width="0.4"/>
+</g>
+<g id="intro-sats">
+<circle id="teeny-tiny9" cx="265.5" cy="268.5" r="1.5" fill="#3D413E"/>
+<circle id="teeny-tiny8" cx="249.5" cy="263.5" r="1.5" fill="#3D413E"/>
+<circle id="teeny-tiny7" cx="270.5" cy="245.5" r="1.5" fill="#3D413E"/>
+<circle id="teeny-tiny6" cx="226.5" cy="246.5" r="1.5" fill="#3D413E"/>
+<circle id="teeny-tiny5" cx="234.5" cy="236.5" r="1.5" fill="#3D413E"/>
+<circle id="teeny-tiny4" cx="263.5" cy="233.5" r="1.5" fill="#3D413E"/>
+<circle id="teeny-tiny3" cx="254.5" cy="246.5" r="1.5" fill="#3D413E"/>
+<circle id="teeny-tiny2" cx="236.5" cy="268.5" r="1.5" fill="#3D413E"/>
+<circle id="teeny-tiny1" cx="244.5" cy="249.5" r="1.5" fill="#3D413E"/>
+</g>
+<g id="intro-planets">
+<circle id="yellow" cx="235.5" cy="255.5" r="5.5" fill="#A54F00"/>
+<circle id="blue_2" cx="262" cy="257" r="5" fill="#4074B1"/>
+<circle id="green_2" cx="249" cy="234" r="6" fill="#177431"/>
+</g>
+</g>
+</g>
+<defs>
+<radialGradient id="paint0_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(250 250) rotate(90) scale(30)">
+<stop stop-color="#FFB03A"/>
+<stop offset="1" stop-color="#F50C0C" stop-opacity="0"/>
+<stop offset="1" stop-color="#FFF73A" stop-opacity="0"/>
+</radialGradient>
+</defs>
+</svg>
