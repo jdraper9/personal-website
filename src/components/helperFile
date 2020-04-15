@@ -1,0 +1,165 @@
+// before clicked
+
+{
+  "rate": 1,
+  "selected": null,
+  "clickedAndSelected": false,
+  "zoomTimer": 0,
+  "zoomedIn": false,
+  "zoomedInBox": null,
+  "zoomBox": "0 0 500 500",
+  "orbitRingOpacity": 0.25,
+  "notSunOpacity": 1,
+  "clickedOnSun": false,
+  "outer": {
+    "r": 200,
+    "theta": 4.393203166779896,
+    "coordinates": "{x: 187.2412796249491, y: 439.89824384887334}",
+    "period": 5000,
+    "satellites": "{1: {…}, 2: {…}, 3: {…}}"
+  },
+  "middle": {
+    "r": 130,
+    "theta": 1.0388199707870016,
+    "coordinates": "{x: 315.9408836749272, y: 137.96518460688338}",
+    "period": 3000,
+    "satellites": "{1: {…}, 2: {…}, 3: {…}}"
+  },
+  "inner": {
+    "r": 60,
+    "theta": 3.6484362683689753,
+    "coordinates": "{x: 197.5431380162428, y: 279.12520610771793}",
+    "period": 1500,
+    "satellites": "{1: {…}, 2: {…}, 3: {…}}"
+  },
+  "sun": {
+    "coordinates": "{x: 250, y: 250}",
+    "satellites": "{3: {…}}"
+  }
+}
+
+// clicked on sun
+
+{
+  "rate": 1,
+  "selected": null,
+  "clickedAndSelected": true,
+  "zoomTimer": 200,
+  "zoomedIn": true,
+  "zoomedInBox": {
+    "x": 210,
+    "y": 210,
+    "w": 80,
+    "h": 80
+  },
+  "zoomBox": "210 210 80 80",
+  "orbitRingOpacity": -0.0012500000000002052,
+  "notSunOpacity": -0.005000000000000821,
+  "clickedOnSun": true,
+  "outer": {
+    "r": 200,
+    "theta": -33.47052813133137,
+    "coordinates": "{x: 156.96978438703772, y: 427.0462622678201}",
+    "period": 5000,
+    "satellites": "{1: {…}, 2: {…}, 3: {…}}"
+  },
+  "middle": {
+    "r": 130,
+    "theta": -62.06739885946967,
+    "coordinates": "{x: 343.828829657045, y: 160.0213874012872}",
+    "period": 3000,
+    "satellites": "{1: {…}, 2: {…}, 3: {…}}"
+  },
+  "inner": {
+    "r": 60,
+    "theta": -122.56400139214188,
+    "coordinates": "{x: 190.05263019429984, y: 247.48746077072835}",
+    "period": 1500,
+    "satellites": "{1: {…}, 2: {…}, 3: {…}}"
+  },
+  "sun": {
+    "coordinates": "{x: 250, y: 250}",
+    "satellites": "{3: {…}}"
+  }
+}
+
+// returned to zoomedOut
+
+{
+  "rate": 1,
+  "selected": null,
+  "clickedAndSelected": false,
+  "zoomTimer": 0,
+  "zoomedIn": false,
+  "zoomedInBox": null,
+  "zoomBox": "0 0 500 500",
+  "orbitRingOpacity": 0.25,
+  "notSunOpacity": 1,
+  "clickedOnSun": false,
+  "outer": {
+    "r": 200,
+    "theta": 3.7146191536044526,
+    "coordinates": "{x: 81.94721490521869, y: 358.4355173450436}",
+    "period": 5000,
+    "satellites": "{1: {…}, 2: {…}, 3: {…}}"
+  },
+  "middle": {
+    "r": 130,
+    "theta": -0.09215338450531901,
+    "coordinates": "{x: 379.44839452201376, y: 261.96299108388354}",
+    "period": 3000,
+    "satellites": "{1: {…}, 2: {…}, 3: {…}}"
+  },
+  "inner": {
+    "r": 60,
+    "theta": 1.3864895577842578,
+    "coordinates": "{x: 260.9959052508158, y: 191.0161880876195}",
+    "period": 1500,
+    "satellites": "{1: {…}, 2: {…}, 3: {…}}"
+  },
+  "sun": {
+    "coordinates": "{x: 250, y: 250}",
+    "satellites": "{3: {…}}"
+  }
+}
+
+
+// ---- // previous state code in vscode
+
+this.state = {
+      rate: 1,
+      selected: null,
+      clickedAndSelected: false,
+      zoomTimer: 0,
+      zoomedIn: false,
+      zoomedInBox: null,
+      zoomBox: '0 0 500 500',
+      orbitRingOpacity: 0.25,
+      notSunOpacity: 1,
+      clickedOnSun: false,
+      outer: {
+        r: 200,
+        theta: 1.5 * PI,
+        coordinates: { x: 250, y: 450 },
+        period: 5000,
+        satellites: satellite_init.outerSats,
+      },
+      middle: {
+        r: 130,
+        theta: 0.5 * PI,
+        coordinates: { x: 250, y: 125 },
+        period: 3000,
+        satellites: satellite_init.midSats,
+      },
+      inner: {
+        r: 60,
+        theta: 1.5 * PI,
+        coordinates: { x: 250, y: 300 },
+        period: 1500,
+        satellites: satellite_init.innerSats,
+      },
+      sun: {
+        coordinates: { x: 250, y: 250 },
+        satellites: { 3: { r: 30 } },
+      },
+    };

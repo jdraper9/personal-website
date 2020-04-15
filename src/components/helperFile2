@@ -1,0 +1,186 @@
+// initial
+
+{
+  "rate": 1,
+  "selected": null,
+  "clickedAndSelected": false,
+  "zoomTimer": 0,
+  "zoomedIn": false,
+  "zoomedInBox": null,
+  "zoomBox": "210 210 80 80",
+  "orbitRingOpacity": 0.25,
+  "notSunOpacity": 1,
+  "sunOpacity": 0,
+  "clickedOnSun": false,
+  "explosionTimer": 0,
+  "outer": {
+    "r": 200,
+    "theta": 4.1607253104142,
+    "coordinates": "{x: 145.17903512465227, y: 420.3307527212896}",
+    "period": 5000,
+    "satellites": "{1: {…}, 2: {…}, 3: {…}}"
+  },
+  "middle": {
+    "r": 130,
+    "theta": 0.651356876844262,
+    "coordinates": "{x: 353.38404733018945, y: 171.18541532413465}",
+    "period": 3000,
+    "satellites": "{1: {…}, 2: {…}, 3: {…}}"
+  },
+  "inner": {
+    "r": 60,
+    "theta": 2.873510080483459,
+    "coordinates": "{x: 192.1431662548712, y: 234.10702076423286}",
+    "period": 1500,
+    "satellites": "{1: {…}, 2: {…}, 3: {…}}"
+  },
+  "sun": {
+    "coordinates": "{x: 250, y: 250}",
+    "satellites": "{3: {…}}"
+  },
+  "intro": true,
+  "bangInitiated": false,
+  "firstZoomOut": true,
+  "shakeDistance": 0.5,
+  "initial_particles": {
+    "1": "{coordinates: {…}, endPoint: {…}}",
+    "2": "{coordinates: {…}, endPoint: {…}}",
+    "3": "{coordinates: {…}, endPoint: {…}}",
+    "4": "{coordinates: {…}, endPoint: {…}}",
+    "5": "{coordinates: {…}, endPoint: {…}}",
+    "6": "{coordinates: {…}, endPoint: {…}}",
+    "7": "{coordinates: {…}, endPoint: {…}}",
+    "8": "{coordinates: {…}, endPoint: {…}}",
+    "9": "{coordinates: {…}, endPoint: {…}}",
+    "yellow": "{coordinates: {…}, endPoint: {…}}",
+    "blue": "{coordinates: {…}, endPoint: {…}}",
+    "green": "{coordinates: {…}, endPoint: {…}}"
+  }
+}
+
+
+// after bang
+
+{
+  "rate": 1,
+  "selected": null,
+  "clickedAndSelected": false,
+  "zoomTimer": 200,
+  "zoomedIn": true,
+  "zoomedInBox": {
+    "x": 0,
+    "y": 0,
+    "w": 500,
+    "h": 500
+  },
+  "zoomBox": "0 0 500 500",
+  "orbitRingOpacity": -0.0012500000000002052,
+  "notSunOpacity": 2.0049999999999786,
+  "sunOpacity": 0.7,
+  "clickedOnSun": false,
+  "explosionTimer": 1.0020000000000007,
+  "outer": {
+    "r": 200,
+    "theta": -1.1887786601183643,
+    "coordinates": "{x: 324.5586897652212, y: 435.58287038542517}",
+    "period": 5000,
+    "satellites": "{1: {…}, 2: {…}, 3: {…}}"
+  },
+  "middle": {
+    "r": 130,
+    "theta": -8.264483074043216,
+    "coordinates": "{x: 198.12100933260132, y: 369.1997077485174}",
+    "period": 3000,
+    "satellites": "{1: {…}, 2: {…}, 3: {…}}"
+  },
+  "inner": {
+    "r": 60,
+    "theta": -14.958169821291625,
+    "coordinates": "{x: 206.09022111827812, y: 290.88925676211653}",
+    "period": 1500,
+    "satellites": "{1: {…}, 2: {…}, 3: {…}}"
+  },
+  "sun": {
+    "coordinates": "{x: 250, y: 250}",
+    "satellites": "{3: {…}}"
+  },
+  "intro": false,
+  "bangInitiated": true,
+  "firstZoomOut": true,
+  "shakeDistance": 2,
+  "initial_particles": {
+    "1": "{coordinates: {…}, endPoint: {…}}",
+    "2": "{coordinates: {…}, endPoint: {…}}",
+    "3": "{coordinates: {…}, endPoint: {…}}",
+    "4": "{coordinates: {…}, endPoint: {…}}",
+    "5": "{coordinates: {…}, endPoint: {…}}",
+    "6": "{coordinates: {…}, endPoint: {…}}",
+    "7": "{coordinates: {…}, endPoint: {…}}",
+    "8": "{coordinates: {…}, endPoint: {…}}",
+    "9": "{coordinates: {…}, endPoint: {…}}",
+    "yellow": "{coordinates: {…}, endPoint: {…}}",
+    "blue": "{coordinates: {…}, endPoint: {…}}",
+    "green": "{coordinates: {…}, endPoint: {…}}"
+  }
+}
+
+// after click away
+
+{
+  "rate": 1,
+  "selected": null,
+  "clickedAndSelected": false,
+  "zoomTimer": 0,
+  "zoomedIn": false,
+  "zoomedInBox": null,
+  "zoomBox": "0 0 500 500",
+  "orbitRingOpacity": 0.25,
+  "notSunOpacity": 1,
+  "sunOpacity": 0.7,
+  "clickedOnSun": false,
+  "explosionTimer": 1.0020000000000007,
+  "outer": {
+    "r": 200,
+    "theta": -8.046247104374826,
+    "coordinates": "{x: 211.7833780088339, y: 446.31477225003806}",
+    "period": 5000,
+    "satellites": "{1: {…}, 2: {…}, 3: {…}}"
+  },
+  "middle": {
+    "r": 130,
+    "theta": -19.693597147802173,
+    "coordinates": "{x: 336.3782546079183, y: 347.1534720475272}",
+    "period": 3000,
+    "satellites": "{1: {…}, 2: {…}, 3: {…}}"
+  },
+  "inner": {
+    "r": 60,
+    "theta": -37.81639796880954,
+    "coordinates": "{x: 309.5877917957242, y: 257.0210447163816}",
+    "period": 1500,
+    "satellites": "{1: {…}, 2: {…}, 3: {…}}"
+  },
+  "sun": {
+    "coordinates": "{x: 250, y: 250}",
+    "satellites": "{3: {…}}"
+  },
+  "intro": false,
+  "bangInitiated": true,
+  "firstZoomOut": true,
+  "shakeDistance": 2,
+  "initial_particles": {
+    "1": "{coordinates: {…}, endPoint: {…}}",
+    "2": "{coordinates: {…}, endPoint: {…}}",
+    "3": "{coordinates: {…}, endPoint: {…}}",
+    "4": "{coordinates: {…}, endPoint: {…}}",
+    "5": "{coordinates: {…}, endPoint: {…}}",
+    "6": "{coordinates: {…}, endPoint: {…}}",
+    "7": "{coordinates: {…}, endPoint: {…}}",
+    "8": "{coordinates: {…}, endPoint: {…}}",
+    "9": "{coordinates: {…}, endPoint: {…}}",
+    "yellow": "{coordinates: {…}, endPoint: {…}}",
+    "blue": "{coordinates: {…}, endPoint: {…}}",
+    "green": "{coordinates: {…}, endPoint: {…}}"
+  }
+}
+

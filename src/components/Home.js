@@ -1,9 +1,11 @@
 import React from 'react';
-import { PI, satellite_init } from '../constants';
+import { PI, satellite_init, particles_init } from '../constants';
 
 class Home extends React.Component {
   intervalID = 0;
   zoomIntervalID = 0;
+  wiggleIntervalID = 0;
+  introOnClickIntervalID = 0;
 
   constructor(props) {
     super(props);
@@ -17,10 +19,12 @@ class Home extends React.Component {
       zoomTimer: 0,
       zoomedIn: false,
       zoomedInBox: null,
-      zoomBox: '0 0 500 500',
-      orbitRingOpacity: 0.25,
-      notSunOpacity: 1,
+      zoomBox: '210 210 80 80',
+      orbitRingOpacity: 0,
+      notSunOpacity: 0,
+      sunOpacity: 0,
       clickedOnSun: false,
+      explosionTimer: 0,
       outer: {
         r: 200,
         theta: 1.5 * PI,
@@ -46,11 +50,20 @@ class Home extends React.Component {
         coordinates: { x: 250, y: 250 },
         satellites: { 3: { r: 30 } },
       },
+      //
+      intro: true,
+      bangInitiated: false,
+      firstZoomOut: true,
+      shakeDistance: 0.5,
+      initial_particles: particles_init,
+      particleOpacity: 1,
+      //
     };
   }
 
   componentDidMount() {
     this.intervalID = setInterval(this.rotate, this.state.rate);
+    this.wiggleIntervalID = setInterval(this.wiggle, this.state.shakeRate);
   }
 
   // onHover, slow rotation speed
@@ -118,6 +131,7 @@ class Home extends React.Component {
       );
       // zoom out
     } else if (this.state.zoomedIn) {
+      // this is how clicking out fixes post Intro
       this.zoomIntervalID = setInterval(
         () =>
           this.zoomIntervalFunction(
@@ -137,7 +151,17 @@ class Home extends React.Component {
   };
 
   zoomIntervalFunction = (x0, y0, w0, h0, x1, y1, w1, h1) => {
-    if (this.state.zoomTimer === 201) {
+    if (this.state.zoomTimer === 201 && this.state.firstZoomOut) {
+      this.setState({
+        zoomTimer: 0,
+        zoomedIn: false,
+        zoomedInBox: null,
+        clickedOnSun: false,
+        notSunOpacity: 1,
+        firstZoomOut: false,
+      });
+      clearInterval(this.zoomIntervalID);
+    } else if (this.state.zoomTimer === 201) {
       this.setState({
         zoomTimer: 200,
         zoomedIn: true,
@@ -165,19 +189,28 @@ class Home extends React.Component {
         h1,
         this.state.zoomTimer / 200
       );
-      this.setState({
-        zoomTimer: !this.state.zoomedIn
-          ? this.state.zoomTimer + 1
-          : this.state.zoomTimer - 1,
-        zoomBox: zoomBoxString,
-        orbitRingOpacity: !this.state.zoomedIn
-          ? this.state.orbitRingOpacity - (1 / 200) * 0.25
-          : this.state.orbitRingOpacity + (1 / 200) * 0.25,
-        notSunOpacity:
-          !this.state.zoomedIn && this.state.clickedOnSun
-            ? this.state.notSunOpacity - (1 / 200) * 1
-            : this.state.notSunOpacity + (1 / 200) * 1,
-      });
+      if (!this.state.firstZoomOut) {
+        this.setState({
+          zoomTimer: !this.state.zoomedIn
+            ? this.state.zoomTimer + 1
+            : this.state.zoomTimer - 1,
+          zoomBox: zoomBoxString,
+          orbitRingOpacity: !this.state.zoomedIn
+            ? this.state.orbitRingOpacity - (1 / 200) * 0.25
+            : this.state.orbitRingOpacity + (1 / 200) * 0.25,
+          notSunOpacity:
+            !this.state.zoomedIn && this.state.clickedOnSun
+              ? this.state.notSunOpacity - (1 / 200) * 1
+              : this.state.notSunOpacity + (1 / 200) * 1,
+        });
+      } else {
+        this.setState({
+          zoomTimer: this.state.zoomTimer + 1,
+          zoomBox: zoomBoxString,
+          orbitRingOpacity: this.state.orbitRingOpacity + (1 / 200) * 0.25,
+          notSunOpacity: this.state.notSunOpacity + (1 / 200) * 1,
+        });
+      }
     }
   };
 
@@ -249,18 +282,181 @@ class Home extends React.Component {
     return { x: x + 250, y: -y + 250 };
   }
 
+  getNewRandomXY(value) {
+    return (
+      value +
+      Math.random() * this.state.shakeDistance -
+      this.state.shakeDistance / 2
+    );
+  }
+
+  wiggle = () => {
+    let newParticles = {
+      1: {
+        coordinates: {
+          x: this.getNewRandomXY(particles_init[1].coordinates.x),
+          y: this.getNewRandomXY(particles_init[1].coordinates.y),
+        },
+        endPoint: particles_init[1].endPoint,
+      },
+      2: {
+        coordinates: {
+          x: this.getNewRandomXY(particles_init[2].coordinates.x),
+          y: this.getNewRandomXY(particles_init[2].coordinates.y),
+        },
+        endPoint: particles_init[2].endPoint,
+      },
+      3: {
+        coordinates: {
+          x: this.getNewRandomXY(particles_init[3].coordinates.x),
+          y: this.getNewRandomXY(particles_init[3].coordinates.y),
+        },
+        endPoint: particles_init[3].endPoint,
+      },
+      4: {
+        coordinates: {
+          x: this.getNewRandomXY(particles_init[4].coordinates.x),
+          y: this.getNewRandomXY(particles_init[4].coordinates.y),
+        },
+        endPoint: particles_init[4].endPoint,
+      },
+      5: {
+        coordinates: {
+          x: this.getNewRandomXY(particles_init[5].coordinates.x),
+          y: this.getNewRandomXY(particles_init[5].coordinates.y),
+        },
+        endPoint: particles_init[5].endPoint,
+      },
+      6: {
+        coordinates: {
+          x: this.getNewRandomXY(particles_init[6].coordinates.x),
+          y: this.getNewRandomXY(particles_init[6].coordinates.y),
+        },
+        endPoint: particles_init[6].endPoint,
+      },
+      7: {
+        coordinates: {
+          x: this.getNewRandomXY(particles_init[7].coordinates.x),
+          y: this.getNewRandomXY(particles_init[7].coordinates.y),
+        },
+        endPoint: particles_init[7].endPoint,
+      },
+      8: {
+        coordinates: {
+          x: this.getNewRandomXY(particles_init[8].coordinates.x),
+          y: this.getNewRandomXY(particles_init[8].coordinates.y),
+        },
+        endPoint: particles_init[8].endPoint,
+      },
+      9: {
+        coordinates: {
+          x: this.getNewRandomXY(particles_init[9].coordinates.x),
+          y: this.getNewRandomXY(particles_init[9].coordinates.y),
+        },
+        endPoint: particles_init[9].endPoint,
+      },
+      yellow: {
+        coordinates: {
+          x: this.getNewRandomXY(particles_init.yellow.coordinates.x),
+          y: this.getNewRandomXY(particles_init.yellow.coordinates.y),
+        },
+        endPoint: particles_init.yellow.endPoint,
+      },
+      blue: {
+        coordinates: {
+          x: this.getNewRandomXY(particles_init.blue.coordinates.x),
+          y: this.getNewRandomXY(particles_init.blue.coordinates.y),
+        },
+        endPoint: particles_init.blue.endPoint,
+      },
+      green: {
+        coordinates: {
+          x: this.getNewRandomXY(particles_init.green.coordinates.x),
+          y: this.getNewRandomXY(particles_init.green.coordinates.y),
+        },
+        endPoint: particles_init.green.endPoint,
+      },
+    };
+
+    this.setState({ initial_particles: newParticles });
+  };
+
+  onSunHover = () => {
+    if (!this.state.bangInitiated) {
+      this.setState({ shakeDistance: 2, sunOpacity: 0.1 });
+    }
+    // this.setState({ selected: 'sun' });
+  };
+
+  offSunHover = () => {
+    if (!this.state.bangInitiated) {
+      this.setState({ shakeDistance: 0.25, sunOpacity: 0 });
+    }
+    // this.setState({ selected: null });
+  };
+
+  bangFunction = () => {
+    // zoom out starts here
+    // Optimal procedure
+    // have it zoom out like any other zoom out
+    // have to understand how clickedONSun was working before
+    // earlier, specified to make orbitOpacity work
+    if (this.state.explosionTimer >= 1) {
+      this.setState({ intro: false });
+      clearInterval(this.introOnClickIntervalID);
+      // acting as though zooming in.. need to be zooming out
+      this.zoomIntervalID = setInterval(
+        () => this.zoomIntervalFunction(210, 210, 80, 80, 0, 0, 500, 500),
+        1
+      );
+    }
+    const initial_particles = this.state.initial_particles;
+    const updatedParticles = {};
+    const updatedExplosionTimer = this.state.explosionTimer + 1 / 500;
+    for (const particle in initial_particles) {
+      let x0 = initial_particles[particle].coordinates.x,
+        x1 = initial_particles[particle].endPoint.x,
+        y0 = initial_particles[particle].coordinates.y,
+        y1 = initial_particles[particle].endPoint.y;
+      updatedParticles[particle] = {
+        coordinates: {
+          x: (x1 - x0) * updatedExplosionTimer + x0,
+          y: (y1 - y0) * updatedExplosionTimer + y0,
+        },
+        endPoint: initial_particles[particle].endPoint,
+      };
+    }
+    this.setState({
+      initial_particles: updatedParticles,
+      explosionTimer: updatedExplosionTimer,
+      sunOpacity:
+        updatedExplosionTimer * 5 > 0.7 ? 0.7 : updatedExplosionTimer * 5,
+      particleOpacity: 1 - updatedExplosionTimer * 2,
+    });
+  };
+
+  bang = () => {
+    this.setState({ bangInitiated: true });
+    clearInterval(this.wiggleIntervalID);
+    this.introOnClickIntervalID = setInterval(this.bangFunction, 1);
+  };
+
   render() {
     return (
       <svg
         // seems like you can increase this and it scales
-        width="700"
+        // width="auto"
+        width="auto"
         height="700"
         viewBox={this.state.zoomBox}
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         onClick={this.select}
       >
-        <g id="planets_3" opacity={this.state.notSunOpacity}>
+        <g
+          id="planets_3"
+          opacity={this.state.intro ? '0' : this.state.notSunOpacity}
+        >
           {/*  */}
 
           <g id="outer">
@@ -543,81 +739,123 @@ class Home extends React.Component {
         </g>
         <g
           id="intro-and-sun"
-          onMouseEnter={() => this.slow({ title: 'sun', rate: 3 })}
-          onMouseLeave={this.fast}
+          onMouseEnter={this.onSunHover}
+          onMouseLeave={this.offSunHover}
+          onClick={!this.state.bangInitiated ? this.bang : null}
         >
           <g id="sun">
-            <circle cx="250" cy="250" r="30" fill="url(#paint0_radial)" />
+            <circle
+              cx="250"
+              cy="250"
+              r={this.state.intro ? 30 : 20}
+              fill="url(#paint0_radial)"
+              opacity={this.state.sunOpacity}
+            />
+            <circle
+              cx="250"
+              cy="250"
+              r="29.8"
+              stroke="black"
+              strokeOpacity="0.05"
+              strokeWidth="0.4"
+              visibility={this.state.intro ? '' : 'hidden'}
+            />
           </g>
-          <g id="intro-sats">
+          <g
+            id="intro-sats"
+            visibility={this.state.intro ? '' : 'hidden'}
+            opacity={this.state.particleOpacity}
+          >
             <circle
               id="teeny-tiny9"
-              cx="265.5"
-              cy="268.5"
+              cx={this.state.initial_particles[9].coordinates.x}
+              cy={this.state.initial_particles[9].coordinates.y}
               r="1.5"
               fill="#3D413E"
             />
             <circle
               id="teeny-tiny8"
-              cx="249.5"
-              cy="263.5"
+              cx={this.state.initial_particles[8].coordinates.x}
+              cy={this.state.initial_particles[8].coordinates.y}
               r="1.5"
               fill="#3D413E"
             />
             <circle
               id="teeny-tiny7"
-              cx="270.5"
-              cy="245.5"
+              cx={this.state.initial_particles[7].coordinates.x}
+              cy={this.state.initial_particles[7].coordinates.y}
               r="1.5"
               fill="#3D413E"
             />
             <circle
               id="teeny-tiny6"
-              cx="226.5"
-              cy="246.5"
+              cx={this.state.initial_particles[6].coordinates.x}
+              cy={this.state.initial_particles[6].coordinates.y}
               r="1.5"
               fill="#3D413E"
             />
             <circle
               id="teeny-tiny5"
-              cx="234.5"
-              cy="236.5"
+              cx={this.state.initial_particles[5].coordinates.x}
+              cy={this.state.initial_particles[5].coordinates.y}
               r="1.5"
               fill="#3D413E"
             />
             <circle
               id="teeny-tiny4"
-              cx="263.5"
-              cy="233.5"
+              cx={this.state.initial_particles[4].coordinates.x}
+              cy={this.state.initial_particles[4].coordinates.y}
               r="1.5"
               fill="#3D413E"
             />
             <circle
               id="teeny-tiny3"
-              cx="254.5"
-              cy="246.5"
+              cx={this.state.initial_particles[3].coordinates.x}
+              cy={this.state.initial_particles[3].coordinates.y}
               r="1.5"
               fill="#3D413E"
             />
             <circle
               id="teeny-tiny2"
-              cx="236.5"
-              cy="268.5"
+              cx={this.state.initial_particles[2].coordinates.x}
+              cy={this.state.initial_particles[2].coordinates.y}
               r="1.5"
               fill="#3D413E"
             />
             <circle
               id="teeny-tiny1"
-              cx="244.5"
-              cy="249.5"
+              cx={this.state.initial_particles[1].coordinates.x}
+              cy={this.state.initial_particles[1].coordinates.y}
               r="1.5"
               fill="#3D413E"
             />
           </g>
-          <g id="intro-planets">
-            <circle id="yellow" cx="235.5" cy="255.5" r="5.5" fill="#A54F00" />
-            <circle id="blue_2" cx="262" cy="257" r="5" fill="#4074B1" />
-            <circle id="green_2" cx="249" cy="234" r="6" fill="#177431" />
+          <g
+            id="intro-planets"
+            visibility={this.state.intro ? '' : 'hidden'}
+            opacity={this.state.particleOpacity}
+          >
+            <circle
+              id="yellow"
+              cx={this.state.initial_particles.yellow.coordinates.x}
+              cy={this.state.initial_particles.yellow.coordinates.y}
+              r="5.5"
+              fill="#A54F00"
+            />
+            <circle
+              id="blue"
+              cx={this.state.initial_particles.blue.coordinates.x}
+              cy={this.state.initial_particles.blue.coordinates.y}
+              r="5"
+              fill="#4074B1"
+            />
+            <circle
+              id="green"
+              cx={this.state.initial_particles.green.coordinates.x}
+              cy={this.state.initial_particles.green.coordinates.y}
+              r="6"
+              fill="#177431"
+            />
           </g>
         </g>
         <defs>
@@ -627,7 +865,9 @@ class Home extends React.Component {
             cy="0"
             r="1"
             gradientUnits="userSpaceOnUse"
-            gradientTransform="translate(250 250) rotate(90) scale(30)"
+            gradientTransform={`translate(250 250) rotate(90) scale(${
+              this.state.intro ? 30 : 20
+            })`}
           >
             <stop stopColor="#FFB03A" />
             <stop offset="1" stopColor="#F50C0C" stopOpacity="0" />
