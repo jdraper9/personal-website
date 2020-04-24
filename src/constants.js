@@ -99,7 +99,7 @@ export const floatDetail = {
         'serverless design using cloud functions',
         'machine learning',
       ],
-      github: 'update',
+      github: 'https://github.com/jdraper9/digi-dopple',
     },
   },
   resourceRepo: {
@@ -115,7 +115,7 @@ export const floatDetail = {
         'User password encryption',
         'SQL databse',
       ],
-      github: 'update',
+      github: 'https://github.com/jdraper9/resource-repository-app',
     },
   },
   pathfinder: {
@@ -126,7 +126,7 @@ export const floatDetail = {
     },
     right: {
       topics: ['Algorithms', 'CSS Animation', 'Pathfinding AI'],
-      github: 'update',
+      github: 'https://github.com/jdraper9/Pathfinding-Visualizer',
     },
   },
 };

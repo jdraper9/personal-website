@@ -19,8 +19,13 @@ function Float(props) {
         <h2>Topics</h2>
         <ul className="lists u-margin-bottom-medium">{topicItems}</ul>
         <h2>Code</h2>
-        <a className="link u-margin-bottom-medium" href={props.info.github}>
-          Github
+        <a
+          className="link u-margin-bottom-medium"
+          href={props.info.github}
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          &#8627; Github
         </a>
         <h2>To visit</h2>
         <p>Click on the 'planet'</p>

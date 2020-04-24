@@ -42,7 +42,7 @@ class App extends React.Component {
         return 'digiiNote';
       }
     } else {
-      return 'Welcome to James.io';
+      return "Welcome to James' Personal Site";
     }
   };
 

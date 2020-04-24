@@ -96,7 +96,16 @@ class Home extends React.Component {
       // redirect or toggle about
       // switch?
       if (this.state.selected !== 'sun') {
-        window.open('https://www.google.com', 'newtab');
+        let url = '';
+        if (this.state.zoomedInOn === 'inner') {
+          url = 'https://resource-repository.herokuapp.com/';
+        } else if (this.state.zoomedInOn === 'middle') {
+          url = 'https://jdraper9.github.io/Pathfinding-Visualizer/';
+        } else if (this.state.zoomedInOn === 'outer') {
+          url = 'https://digi-dopple.firebaseapp.com/';
+        }
+
+        window.open(url, 'newtab');
         this.setState({ zoomedInOn: null });
         this.props.getZoomedOn(null);
       } else {
