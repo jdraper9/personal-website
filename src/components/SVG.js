@@ -20,6 +20,7 @@ class Home extends React.Component {
       zoomedIn: false,
       zoomedInBox: null,
       zoomBox: '210 210 80 80',
+      zoomedInOn: null,
       orbitRingOpacity: 0,
       notSunOpacity: 0,
       sunOpacity: 0,
@@ -27,21 +28,21 @@ class Home extends React.Component {
       explosionTimer: 0,
       outer: {
         r: 200,
-        theta: 1.5 * PI,
+        theta: Math.random() * 6.27,
         coordinates: { x: 250, y: 450 },
-        period: 5000,
+        period: 4800,
         satellites: satellite_init.outerSats,
       },
       middle: {
         r: 130,
-        theta: 0.5 * PI,
+        theta: Math.random() * 6.27,
         coordinates: { x: 250, y: 125 },
-        period: 3000,
+        period: 2900,
         satellites: satellite_init.midSats,
       },
       inner: {
         r: 60,
-        theta: 1.5 * PI,
+        theta: Math.random() * 6.27,
         coordinates: { x: 250, y: 300 },
         period: 1500,
         satellites: satellite_init.innerSats,
@@ -88,7 +89,7 @@ class Home extends React.Component {
   // when a planet group is clicked, zoom, etc. need clickedAndSelected in state so planets stop rotating
   select = () => {
     let clickedAndSelected = this.state.selected !== null ? true : false;
-    this.setState({ clickedAndSelected });
+    this.setState({ clickedAndSelected, zoomedInOn: this.state.selected });
     // group of planet and satellites (outer, middle, inner) need coordinates, and largest radius of satellite
 
     if (this.state.zoomedIn && clickedAndSelected) {
@@ -96,6 +97,8 @@ class Home extends React.Component {
       // switch?
       if (this.state.selected !== 'sun') {
         window.open('https://www.google.com', 'newtab');
+        this.setState({ zoomedInOn: null });
+        this.props.getZoomedOn(null);
       } else {
         console.log('hey');
       }
@@ -131,6 +134,8 @@ class Home extends React.Component {
       );
       // zoom out
     } else if (this.state.zoomedIn) {
+      this.setState({ zoomedInOn: null });
+      this.props.getZoomedOn(null);
       // this is how clicking out fixes post Intro
       this.zoomIntervalID = setInterval(
         () =>
@@ -162,6 +167,7 @@ class Home extends React.Component {
       });
       clearInterval(this.zoomIntervalID);
     } else if (this.state.zoomTimer === 201) {
+      this.props.getZoomedOn(this.state.zoomedInOn);
       this.setState({
         zoomTimer: 200,
         zoomedIn: true,
@@ -241,7 +247,7 @@ class Home extends React.Component {
 
     let newTheta = this.state.clickedAndSelected
       ? sphere.theta
-      : sphere.theta - thetaIncrement;
+      : sphere.theta + thetaIncrement;
 
     let x = r * Math.cos(newTheta),
       y = r * Math.sin(newTheta);
@@ -383,7 +389,7 @@ class Home extends React.Component {
 
   onSunHover = () => {
     if (!this.state.bangInitiated) {
-      this.setState({ shakeDistance: 2, sunOpacity: 0.1 });
+      this.setState({ shakeDistance: 1.5, sunOpacity: 0.1 });
     }
     // this.setState({ selected: 'sun' });
   };
@@ -430,7 +436,7 @@ class Home extends React.Component {
       initial_particles: updatedParticles,
       explosionTimer: updatedExplosionTimer,
       sunOpacity:
-        updatedExplosionTimer * 5 > 0.7 ? 0.7 : updatedExplosionTimer * 5,
+        updatedExplosionTimer * 5 > 0.48 ? 0.48 : updatedExplosionTimer * 5,
       particleOpacity: 1 - updatedExplosionTimer * 2,
     });
   };
@@ -444,9 +450,10 @@ class Home extends React.Component {
   render() {
     return (
       <svg
+        className="main-svg"
         // seems like you can increase this and it scales
         // width="auto"
-        width="auto"
+        width="700"
         height="700"
         viewBox={this.state.zoomBox}
         fill="none"
@@ -636,7 +643,7 @@ class Home extends React.Component {
               id="middle"
               cx={this.state.middle.coordinates.x}
               cy={this.state.middle.coordinates.y}
-              r="8"
+              r="7"
               fill="#A54F00"
               opacity=".95"
               onMouseEnter={() => this.slow({ title: 'middle', rate: 70 })}
