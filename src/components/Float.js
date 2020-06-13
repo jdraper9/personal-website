@@ -2,7 +2,9 @@ import React from 'react';
 
 function Float(props) {
   if (props.side === 'left') {
-    const stackItems = props.info.stack.map((stack) => <li>{stack}</li>);
+    const stackItems = props.info.stack.map((stack, i) => (
+      <li key={i}>{stack}</li>
+    ));
 
     return (
       <div className="in-float">
@@ -13,7 +15,9 @@ function Float(props) {
       </div>
     );
   } else if (props.side === 'right') {
-    const topicItems = props.info.topics.map((topic) => <li>{topic}</li>);
+    const topicItems = props.info.topics.map((topic, i) => (
+      <li key={i}>{topic}</li>
+    ));
     return (
       <div className="in-float">
         <h2>Topics</h2>

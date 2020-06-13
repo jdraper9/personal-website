@@ -1,11 +1,16 @@
 // COLORS
-$color-primary: rgba(241, 231, 203, 0.85);
-$color-primary-light: rgba(241, 231, 203, 0.84);
-$color-primary-dark: rgba(241, 231, 203, 0.9);
+// $color-primary: rgba(241, 231, 203, 0.85);
+// $color-primary-light: rgba(241, 231, 203, 0.84);
+// $color-primary-dark: rgba(241, 231, 203, 0.9);
 
-$color-secondary: rgb(208, 179, 87);
+$color-primary: rgba(0, 0, 0, 1);
+$color-primary-light: rgba(0, 0, 0, 1);
+$color-primary-dark: rgba(0, 0, 0, 0.95);
+$color-primary-dark-2: rgba(0, 0, 0, 0.2);
+
+$color-secondary: rgba(255, 255, 255, 0.9);
 $color-green: rgb(20, 113, 0);
-$color-red: rgb(211, 105, 73);
+$color-red: rgb(255, 255, 255);
 
 $color-grey-light-1: #f7f7f7;
 

@@ -6,6 +6,8 @@
   /* without, padding and borders added to height / width of element */
   /* inherited from body */
   box-sizing: inherit;
+  list-style: none;
+  text-decoration: none;
 }
 
 html {
@@ -16,4 +18,5 @@ html {
 
 body {
   box-sizing: border-box;
+  background-color: $color-primary-dark;
 }

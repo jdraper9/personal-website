@@ -13,7 +13,7 @@ class Home extends React.Component {
     // initial conditions for 'planets' and 'satellites'
 
     this.state = {
-      rate: 4,
+      rate: 5,
       selected: null,
       clickedAndSelected: false,
       zoomTimer: 0,
@@ -80,7 +80,7 @@ class Home extends React.Component {
 
   // offHover, resume original speed
   fast = () => {
-    this.setState({ ...this.state, rate: 4, selected: null }, () => {
+    this.setState({ ...this.state, rate: 5, selected: null }, () => {
       clearInterval(this.intervalID);
       this.intervalID = setInterval(this.rotate, this.state.rate);
     });
@@ -211,8 +211,8 @@ class Home extends React.Component {
             : this.state.zoomTimer - 1,
           zoomBox: zoomBoxString,
           orbitRingOpacity: !this.state.zoomedIn
-            ? this.state.orbitRingOpacity - (1 / 200) * 0.25
-            : this.state.orbitRingOpacity + (1 / 200) * 0.25,
+            ? this.state.orbitRingOpacity - (1 / 200) * 0.1
+            : this.state.orbitRingOpacity + (1 / 200) * 0.1,
           notSunOpacity:
             !this.state.zoomedIn && this.state.clickedOnSun
               ? this.state.notSunOpacity - (1 / 200) * 1
@@ -222,7 +222,7 @@ class Home extends React.Component {
         this.setState({
           zoomTimer: this.state.zoomTimer + 1,
           zoomBox: zoomBoxString,
-          orbitRingOpacity: this.state.orbitRingOpacity + (1 / 200) * 0.25,
+          orbitRingOpacity: this.state.orbitRingOpacity + (1 / 200) * 0.1,
           notSunOpacity: this.state.notSunOpacity + (1 / 200) * 1,
         });
       }
@@ -452,6 +452,7 @@ class Home extends React.Component {
 
   bang = () => {
     this.setState({ bangInitiated: true });
+    this.props.bangTrue();
     clearInterval(this.wiggleIntervalID);
     this.introOnClickIntervalID = setInterval(this.bangFunction, 1);
   };
@@ -481,9 +482,9 @@ class Home extends React.Component {
                 cx={this.state.outer.coordinates.x}
                 cy={this.state.outer.coordinates.y}
                 r="36"
-                stroke="black"
+                stroke="white"
                 strokeOpacity="0.13"
-                strokeWidth="0.4"
+                strokeWidth="0.2"
               />
             </g>
             <circle
@@ -504,9 +505,9 @@ class Home extends React.Component {
                 cx={this.state.outer.coordinates.x}
                 cy={this.state.outer.coordinates.y}
                 r="30"
-                stroke="black"
+                stroke="white"
                 strokeOpacity="00.13"
-                strokeWidth="0.4"
+                strokeWidth="0.2"
               />
             </g>
             <circle
@@ -527,9 +528,9 @@ class Home extends React.Component {
                 cx={this.state.outer.coordinates.x}
                 cy={this.state.outer.coordinates.y}
                 r="22"
-                stroke="black"
+                stroke="white"
                 strokeOpacity="00.13"
-                strokeWidth="0.4"
+                strokeWidth="0.2"
               />
             </g>
             <circle
@@ -552,7 +553,7 @@ class Home extends React.Component {
               cx="250"
               cy="250"
               r="199.5"
-              stroke={this.state.selected === 'outer' ? 'blue' : 'black'}
+              stroke={this.state.selected === 'outer' ? 'blue' : 'white'}
               strokeOpacity={`${this.state.orbitRingOpacity}`}
             />
             <circle
@@ -575,9 +576,9 @@ class Home extends React.Component {
                 cx={this.state.middle.coordinates.x}
                 cy={this.state.middle.coordinates.y}
                 r="30"
-                stroke="black"
+                stroke="white"
                 strokeOpacity="00.13"
-                strokeWidth="0.4"
+                strokeWidth="0.2"
               />
             </g>
             <circle
@@ -598,9 +599,9 @@ class Home extends React.Component {
                 cx={this.state.middle.coordinates.x}
                 cy={this.state.middle.coordinates.y}
                 r="22"
-                stroke="black"
+                stroke="white"
                 strokeOpacity="00.13"
-                strokeWidth="0.4"
+                strokeWidth="0.2"
               />
             </g>
             <circle
@@ -621,9 +622,9 @@ class Home extends React.Component {
                 cx={this.state.middle.coordinates.x}
                 cy={this.state.middle.coordinates.y}
                 r="16"
-                stroke="black"
+                stroke="white"
                 strokeOpacity="00.13"
-                strokeWidth="0.4"
+                strokeWidth="0.2"
               />
             </g>
             <circle
@@ -645,7 +646,7 @@ class Home extends React.Component {
               cx="250"
               cy="250"
               r="130"
-              stroke={this.state.selected === 'middle' ? 'orange' : 'black'}
+              stroke={this.state.selected === 'middle' ? 'orange' : 'white'}
               strokeOpacity={`${this.state.orbitRingOpacity}`}
             />
             <circle
@@ -668,9 +669,9 @@ class Home extends React.Component {
                 cx={this.state.inner.coordinates.x}
                 cy={this.state.inner.coordinates.y}
                 r="25"
-                stroke="black"
+                stroke="white"
                 strokeOpacity="00.13"
-                strokeWidth="0.4"
+                strokeWidth="0.2"
               />
             </g>
             <circle
@@ -691,9 +692,9 @@ class Home extends React.Component {
                 cx={this.state.inner.coordinates.x}
                 cy={this.state.inner.coordinates.y}
                 r="20"
-                stroke="black"
+                stroke="white"
                 strokeOpacity="00.13"
-                strokeWidth="0.4"
+                strokeWidth="0.2"
               />
             </g>
             <circle
@@ -714,9 +715,9 @@ class Home extends React.Component {
                 cx={this.state.inner.coordinates.x}
                 cy={this.state.inner.coordinates.y}
                 r="14"
-                stroke="black"
+                stroke="white"
                 strokeOpacity="00.13"
-                strokeWidth="0.4"
+                strokeWidth="0.2"
               />
             </g>
             <circle
@@ -738,7 +739,7 @@ class Home extends React.Component {
               cx="250"
               cy="250"
               r="60"
-              stroke={this.state.selected === 'inner' ? 'green' : 'black'}
+              stroke={this.state.selected === 'inner' ? 'green' : 'white'}
               strokeOpacity={`${this.state.orbitRingOpacity}`}
             />
             <circle
@@ -771,9 +772,9 @@ class Home extends React.Component {
               cx="250"
               cy="250"
               r="29.8"
-              stroke="black"
+              stroke="white"
               strokeOpacity="0.05"
-              strokeWidth="0.4"
+              strokeWidth="0.2"
               visibility={this.state.intro ? '' : 'hidden'}
             />
           </g>
