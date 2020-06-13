@@ -13,7 +13,7 @@ class Home extends React.Component {
     // initial conditions for 'planets' and 'satellites'
 
     this.state = {
-      rate: 1,
+      rate: 4,
       selected: null,
       clickedAndSelected: false,
       zoomTimer: 0,
@@ -80,7 +80,7 @@ class Home extends React.Component {
 
   // offHover, resume original speed
   fast = () => {
-    this.setState({ ...this.state, rate: 1, selected: null }, () => {
+    this.setState({ ...this.state, rate: 4, selected: null }, () => {
       clearInterval(this.intervalID);
       this.intervalID = setInterval(this.rotate, this.state.rate);
     });
