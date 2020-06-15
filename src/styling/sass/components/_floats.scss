@@ -12,13 +12,14 @@
 
 .floats-light {
   display: flex;
-  background-color: $light-color-primary-light;
+  background-color: $light-color-primary;
   padding: 8rem;
   padding-top: 9rem;
   font-size: 1.3rem;
+  color: $light-color-red;
 
   h2 {
-    color: $color-secondary;
+    color: $light-color-secondary;
   }
 }
 
@@ -28,6 +29,12 @@
 
 .link {
   color: $color-red;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.link-light {
+  color: $light-color-red;
   text-decoration: none;
   display: inline-block;
 }

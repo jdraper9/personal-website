@@ -31,9 +31,21 @@ class App extends React.Component {
       }
 
       if (side === 'left') {
-        return <Float side="left" info={floatInfo.left} />;
+        return (
+          <Float
+            darkMode={this.state.darkMode}
+            side="left"
+            info={floatInfo.left}
+          />
+        );
       } else if (side === 'right') {
-        return <Float side="right" info={floatInfo.right} />;
+        return (
+          <Float
+            darkMode={this.state.darkMode}
+            side="right"
+            info={floatInfo.right}
+          />
+        );
       }
     } else {
       return null;
@@ -79,7 +91,10 @@ class App extends React.Component {
       return (
         <div>
           <div className="logo-container">
-            <NavLink to="/personal-website" className="logo-link">
+            <NavLink
+              to="/personal-website"
+              className={this.state.darkMode ? 'logo-link' : 'logo-link-light'}
+            >
               <h1 className="heading-primary-appear">
                 James <span className="title-span">Draper</span>
               </h1>
@@ -89,13 +104,21 @@ class App extends React.Component {
           {this.renderTitle()}
 
           <ul className="navigation">
-            <NavLink to="/personal-website/about" exact className="header-link">
+            <NavLink
+              to="/personal-website/about"
+              exact
+              className={
+                this.state.darkMode ? 'header-link' : 'header-link-light'
+              }
+            >
               <li>About</li>
             </NavLink>
             <NavLink
               to="/personal-website/contact"
               exact
-              className="header-link"
+              className={
+                this.state.darkMode ? 'header-link' : 'header-link-light'
+              }
             >
               <li>Contact</li>
             </NavLink>
@@ -104,14 +127,28 @@ class App extends React.Component {
               rel="noopener noreferrer"
               target="_blank"
             >
-              <i className="fab fa-linkedin fa-lg header-link header-icon"></i>
+              <i
+                className="fab fa-linkedin fa-lg header-link header-icon"
+                style={
+                  this.state.darkMode
+                    ? { color: '' }
+                    : { color: 'rgb(208, 179, 87)' }
+                }
+              ></i>
             </a>
             <a
               href="https://github.com/jdraper9"
               rel="noopener noreferrer"
               target="_blank"
             >
-              <i className="fab fa-github fa-lg header-link header-icon"></i>
+              <i
+                className="fab fa-github fa-lg header-link header-icon"
+                style={
+                  this.state.darkMode
+                    ? { color: '' }
+                    : { color: 'rgb(208, 179, 87)' }
+                }
+              ></i>
             </a>
           </ul>
         </div>
@@ -121,9 +158,9 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className={this.state.darkMode ? '' : 'body-light'}>
         <Router>
-          <div className="header">
+          <div className={this.state.darkMode ? 'header' : 'header-light'}>
             <div className="inner-header">{this.renderHeader()}</div>
           </div>
         </Router>
@@ -164,6 +201,8 @@ class App extends React.Component {
             name="toggle-1"
             width="40px"
             height="20px"
+            rightKnobColor="rgb(208, 179, 87)"
+            rightBorderColor="rgb(208, 179, 87)"
             onToggle={() => this.setState({ darkMode: !this.state.darkMode })}
           />
         </label>

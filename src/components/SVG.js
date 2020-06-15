@@ -482,7 +482,7 @@ class Home extends React.Component {
                 cx={this.state.outer.coordinates.x}
                 cy={this.state.outer.coordinates.y}
                 r="36"
-                stroke="white"
+                stroke={this.props.darkMode ? 'white' : 'black'}
                 strokeOpacity="0.13"
                 strokeWidth="0.2"
               />
@@ -505,7 +505,7 @@ class Home extends React.Component {
                 cx={this.state.outer.coordinates.x}
                 cy={this.state.outer.coordinates.y}
                 r="30"
-                stroke="white"
+                stroke={this.props.darkMode ? 'white' : 'black'}
                 strokeOpacity="00.13"
                 strokeWidth="0.2"
               />
@@ -528,7 +528,7 @@ class Home extends React.Component {
                 cx={this.state.outer.coordinates.x}
                 cy={this.state.outer.coordinates.y}
                 r="22"
-                stroke="white"
+                stroke={this.props.darkMode ? 'white' : 'black'}
                 strokeOpacity="00.13"
                 strokeWidth="0.2"
               />
@@ -553,7 +553,13 @@ class Home extends React.Component {
               cx="250"
               cy="250"
               r="199.5"
-              stroke={this.state.selected === 'outer' ? 'blue' : 'white'}
+              stroke={
+                this.state.selected === 'outer'
+                  ? 'blue'
+                  : this.props.darkMode
+                  ? 'white'
+                  : 'black'
+              }
               strokeOpacity={`${this.state.orbitRingOpacity}`}
             />
             <circle
@@ -576,7 +582,7 @@ class Home extends React.Component {
                 cx={this.state.middle.coordinates.x}
                 cy={this.state.middle.coordinates.y}
                 r="30"
-                stroke="white"
+                stroke={this.props.darkMode ? 'white' : 'black'}
                 strokeOpacity="00.13"
                 strokeWidth="0.2"
               />
@@ -599,7 +605,7 @@ class Home extends React.Component {
                 cx={this.state.middle.coordinates.x}
                 cy={this.state.middle.coordinates.y}
                 r="22"
-                stroke="white"
+                stroke={this.props.darkMode ? 'white' : 'black'}
                 strokeOpacity="00.13"
                 strokeWidth="0.2"
               />
@@ -622,7 +628,7 @@ class Home extends React.Component {
                 cx={this.state.middle.coordinates.x}
                 cy={this.state.middle.coordinates.y}
                 r="16"
-                stroke="white"
+                stroke={this.props.darkMode ? 'white' : 'black'}
                 strokeOpacity="00.13"
                 strokeWidth="0.2"
               />
@@ -646,7 +652,13 @@ class Home extends React.Component {
               cx="250"
               cy="250"
               r="130"
-              stroke={this.state.selected === 'middle' ? 'orange' : 'white'}
+              stroke={
+                this.state.selected === 'middle'
+                  ? 'orange'
+                  : this.props.darkMode
+                  ? 'white'
+                  : 'black'
+              }
               strokeOpacity={`${this.state.orbitRingOpacity}`}
             />
             <circle
@@ -669,7 +681,7 @@ class Home extends React.Component {
                 cx={this.state.inner.coordinates.x}
                 cy={this.state.inner.coordinates.y}
                 r="25"
-                stroke="white"
+                stroke={this.props.darkMode ? 'white' : 'black'}
                 strokeOpacity="00.13"
                 strokeWidth="0.2"
               />
@@ -692,7 +704,7 @@ class Home extends React.Component {
                 cx={this.state.inner.coordinates.x}
                 cy={this.state.inner.coordinates.y}
                 r="20"
-                stroke="white"
+                stroke={this.props.darkMode ? 'white' : 'black'}
                 strokeOpacity="00.13"
                 strokeWidth="0.2"
               />
@@ -715,7 +727,7 @@ class Home extends React.Component {
                 cx={this.state.inner.coordinates.x}
                 cy={this.state.inner.coordinates.y}
                 r="14"
-                stroke="white"
+                stroke={this.props.darkMode ? 'white' : 'black'}
                 strokeOpacity="00.13"
                 strokeWidth="0.2"
               />
@@ -739,7 +751,13 @@ class Home extends React.Component {
               cx="250"
               cy="250"
               r="60"
-              stroke={this.state.selected === 'inner' ? 'green' : 'white'}
+              stroke={
+                this.state.selected === 'inner'
+                  ? 'green'
+                  : this.props.darkMode
+                  ? 'white'
+                  : 'black'
+              }
               strokeOpacity={`${this.state.orbitRingOpacity}`}
             />
             <circle
@@ -772,7 +790,7 @@ class Home extends React.Component {
               cx="250"
               cy="250"
               r="29.8"
-              stroke="white"
+              stroke={this.props.darkMode ? 'white' : 'black'}
               strokeOpacity="0.05"
               strokeWidth="0.2"
               visibility={this.state.intro ? '' : 'hidden'}

@@ -9,6 +9,18 @@
   box-shadow: 0.5px 1px 2px rgba(white, 0.2);
 }
 
+.header-light {
+  position: fixed;
+  height: 60px;
+  width: 100%;
+  text-align: center;
+  background-color: $light-color-primary-dark;
+  color: $light-color-secondary;
+  padding: 10px;
+  padding-top: 15px;
+  box-shadow: 0.5px 1px 2px rgba(white, 0.2);
+}
+
 .inner-header {
   width: 83%;
   height: 100%;
@@ -50,8 +62,20 @@
   vertical-align: middle;
 }
 
+.header-link-light {
+  color: $light-color-secondary;
+  height: 100%;
+  float: left;
+  padding: 8px 20px;
+  vertical-align: middle;
+}
+
 .logo-link {
   color: white;
+}
+
+.logo-link-light {
+  color: $light-color-secondary;
 }
 
 .project {

@@ -24,7 +24,11 @@ function Float(props) {
         <ul className="lists u-margin-bottom-medium">{topicItems}</ul>
         <h2>Code</h2>
         <a
-          className="link u-margin-bottom-medium"
+          className={
+            props.darkMode
+              ? 'link u-margin-bottom-medium'
+              : 'link-light u-margin-bottom-medium'
+          }
           href={props.info.github}
           rel="noopener noreferrer"
           target="_blank"
