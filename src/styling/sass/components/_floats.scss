@@ -10,6 +10,18 @@
   }
 }
 
+.floats-light {
+  display: flex;
+  background-color: $light-color-primary-light;
+  padding: 8rem;
+  padding-top: 9rem;
+  font-size: 1.3rem;
+
+  h2 {
+    color: $color-secondary;
+  }
+}
+
 .lists {
   list-style-type: none;
 }

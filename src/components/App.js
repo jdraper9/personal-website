@@ -6,12 +6,17 @@ import Float from './Float';
 import { floatDetail } from '../constants';
 
 import { BrowserRouter as Router, NavLink } from 'react-router-dom';
+import { Toggle } from 'react-toggle-component';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { zoomedOn: null, bangInitiated: false };
+    this.state = {
+      zoomedOn: null,
+      bangInitiated: false,
+      darkMode: true,
+    };
   }
 
   renderFloat = (side) => {
@@ -65,12 +70,16 @@ class App extends React.Component {
 
   renderHeader = () => {
     if (!this.state.bangInitiated) {
-      return <h1 className="heading-primary">Welcome to my portfolio!</h1>;
+      return (
+        <h1 className="heading-primary" style={{ fontWeight: '100' }}>
+          Hello world!
+        </h1>
+      );
     } else {
       return (
         <div>
           <div className="logo-container">
-            <NavLink to="/" className="logo-link">
+            <NavLink to="/personal-website" className="logo-link">
               <h1 className="heading-primary-appear">
                 James <span className="title-span">Draper</span>
               </h1>
@@ -80,10 +89,14 @@ class App extends React.Component {
           {this.renderTitle()}
 
           <ul className="navigation">
-            <NavLink to="/about" className="header-link">
+            <NavLink to="/personal-website/about" exact className="header-link">
               <li>About</li>
             </NavLink>
-            <NavLink to="/contact" className="header-link">
+            <NavLink
+              to="/personal-website/contact"
+              exact
+              className="header-link"
+            >
               <li>Contact</li>
             </NavLink>
             <a
@@ -98,7 +111,7 @@ class App extends React.Component {
               rel="noopener noreferrer"
               target="_blank"
             >
-              <i class="fab fa-github fa-lg header-link header-icon"></i>
+              <i className="fab fa-github fa-lg header-link header-icon"></i>
             </a>
           </ul>
         </div>
@@ -118,17 +131,42 @@ class App extends React.Component {
         <div className="spacer">&nbsp;</div>
         <main>
           <div className="grid-container">
-            <div className="floats col-1-of-3">{this.renderFloat('left')}</div>
-            <div className="svg-wrapper col-2-of-3">
-              <SVG getZoomedOn={this.getZoomedOn} bangTrue={this.bangInfo} />
+            <div
+              className={
+                this.state.darkMode
+                  ? 'floats col-1-of-3'
+                  : 'floats-light col-1-of-3'
+              }
+            >
+              {this.renderFloat('left')}
             </div>
-            <div className="floats col-1-of-3 right">
+            <div className="svg-wrapper col-2-of-3">
+              <SVG
+                getZoomedOn={this.getZoomedOn}
+                bangTrue={this.bangInfo}
+                darkMode={this.state.darkMode}
+              />
+            </div>
+            <div
+              className={
+                this.state.darkMode
+                  ? 'floats col-1-of-3 right'
+                  : 'floats-light col-1-of-3 right'
+              }
+            >
               {this.renderFloat('right')}
             </div>
           </div>
         </main>
 
-        {/* <footer>this is a footer</footer> */}
+        <label htmlFor="toggle-1" className="light-dark">
+          <Toggle
+            name="toggle-1"
+            width="40px"
+            height="20px"
+            onToggle={() => this.setState({ darkMode: !this.state.darkMode })}
+          />
+        </label>
       </div>
     );
   }

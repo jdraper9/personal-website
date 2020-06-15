@@ -13,7 +13,7 @@ class Home extends React.Component {
     // initial conditions for 'planets' and 'satellites'
 
     this.state = {
-      rate: 5,
+      rate: 7,
       selected: null,
       clickedAndSelected: false,
       zoomTimer: 0,
@@ -80,7 +80,7 @@ class Home extends React.Component {
 
   // offHover, resume original speed
   fast = () => {
-    this.setState({ ...this.state, rate: 5, selected: null }, () => {
+    this.setState({ ...this.state, rate: 7, selected: null }, () => {
       clearInterval(this.intervalID);
       this.intervalID = setInterval(this.rotate, this.state.rate);
     });
@@ -460,7 +460,7 @@ class Home extends React.Component {
   render() {
     return (
       <svg
-        className="main-svg"
+        className={this.props.darkMode ? 'main-svg' : 'main-svg-light'}
         // seems like you can increase this and it scales
         // width="auto"
         width="700"
