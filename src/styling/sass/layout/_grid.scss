@@ -3,15 +3,37 @@
   height: 800 px;
 }
 
+.grid-container-light {
+  background-color: rgb(241, 231, 203);
+  display: flex;
+  height: 800 px;
+}
+
 // make this responsive
 .col-1-of-3 {
-  width: calc((100% - 700px) / 2);
+  width: 25.5%;
   height: 700px;
   margin: auto;
 }
 
 .col-2-of-3 {
-  width: 700 px;
-  height: 700px;
+  // > 1280px
+  width: 49%;
+  // width: 60%;
+  // width: 65%;
+  // width: 85%;
+  // width: 100%;
+  height: auto;
   margin: auto;
 }
+
+// media query:
+// at 1280px,
+//    change col-2 width to 60%, move info divs
+//    down
+//  at 900px,
+//    change col2- width to 65%;
+// at 700px,
+//    change col-2 width to 85%;
+// at 500px,
+//    change col-2 w to

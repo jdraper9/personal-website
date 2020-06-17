@@ -1,10 +1,5 @@
 import React from 'react';
-import {
-  PI,
-  satellite_init,
-  particles_init,
-  _defaultState,
-} from '../constants';
+import { PI, satellite_init, particles_init } from '../constants';
 
 class Home extends React.Component {
   intervalID = 0;
@@ -20,7 +15,7 @@ class Home extends React.Component {
     // initial conditions for 'planets' and 'satellites'
 
     this.state = {
-      rate: 7,
+      rate: 7.5,
       selected: null,
       clickedAndSelected: false,
       zoomTimer: 0,
@@ -93,7 +88,7 @@ class Home extends React.Component {
 
   // offHover, resume original speed
   fast = () => {
-    this.setState({ ...this.state, rate: 7, selected: null }, () => {
+    this.setState({ ...this.state, rate: 7.5, selected: null }, () => {
       clearInterval(this.intervalID);
       this.intervalID = setInterval(this.rotate, this.state.rate);
     });
@@ -476,8 +471,8 @@ class Home extends React.Component {
         className={this.props.darkMode ? 'main-svg' : 'main-svg-light'}
         // seems like you can increase this and it scales
         // width="auto"
-        width="700"
-        height="700"
+        width="100%"
+        height="auto"
         viewBox={this.state.zoomBox}
         fill="none"
         xmlns="http://www.w3.org/2000/svg"

@@ -14,10 +14,14 @@ class Float extends React.Component {
 
         return (
           <div className="in-float">
-            <h2> About</h2>
-            <p className="u-margin-bottom-big">{this.props.info.about}</p>
+            <h2>About</h2>
+            <p className="u-margin-bottom-big" style={{ paddingLeft: '6px' }}>
+              {this.props.info.about}
+            </p>
             <h2>Tech Stack</h2>
-            <ul className="lists">{stackItems}</ul>
+            <ul style={{ paddingLeft: '6px' }} className="lists">
+              {stackItems}
+            </ul>
           </div>
         );
       } else if (this.props.side === 'right') {
@@ -27,7 +31,12 @@ class Float extends React.Component {
         return (
           <div className="in-float">
             <h2>Topics</h2>
-            <ul className="lists u-margin-bottom-medium">{topicItems}</ul>
+            <ul
+              className="lists u-margin-bottom-medium"
+              style={{ paddingRight: '7px' }}
+            >
+              {topicItems}
+            </ul>
             <h2>Code</h2>
             <a
               className={
@@ -35,6 +44,7 @@ class Float extends React.Component {
                   ? 'link u-margin-bottom-medium'
                   : 'link-light u-margin-bottom-medium'
               }
+              style={{ paddingRight: '9px' }}
               href={this.props.info.github}
               rel="noopener noreferrer"
               target="_blank"
@@ -42,7 +52,7 @@ class Float extends React.Component {
               &#8627; Github
             </a>
             <h2>To visit</h2>
-            <p>Click on the 'planet'</p>
+            <p style={{ paddingRight: '7px' }}>Click on the 'planet'</p>
           </div>
         );
       }

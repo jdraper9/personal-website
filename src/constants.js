@@ -96,8 +96,9 @@ export const floatDetail = {
     right: {
       topics: [
         'NoSQL database',
-        'serverless design using cloud functions',
+        'serverless cloud functions',
         'machine learning',
+        'character recognition',
       ],
       github: 'https://github.com/jdraper9/digi-dopple',
     },
@@ -106,22 +107,17 @@ export const floatDetail = {
     left: {
       about:
         'A place for teachers to organize links to online resources such as informational websites, tutorials, or videos. Resources can be searched by tags',
-      stack: ['Ruby on Rails', 'PostgreSQL', 'bcrypt'],
+      stack: ['Ruby on Rails', 'PostgreSQL', 'bCrypt'],
     },
     right: {
-      topics: [
-        'CRUD App',
-        'RESTful resource structure',
-        'User password encryption',
-        'SQL databse',
-      ],
+      topics: ['CRUD App', 'REST', 'User password encryption', 'SQL databse'],
       github: 'https://github.com/jdraper9/resource-repository-app',
     },
   },
   pathfinder: {
     left: {
       about:
-        "An app that visualizes three pathfinding algorithms: Dijkstra's, A*, and Depth First Search. Users can click and drag to create walls, and the program will find the shortest path from beginning to end",
+        "A web app that visualizes three pathfinding algorithms. Learned how to do Dijkstra's from a tutorial, then implented A* and Depth First Search from pseudocode.",
       stack: ['React'],
     },
     right: {

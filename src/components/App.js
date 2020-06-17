@@ -24,6 +24,7 @@ class App extends React.Component {
       zoomedOn: null,
       bangInitiated: false,
       darkMode: true,
+      onHomePage: true,
     };
   }
 
@@ -79,10 +80,11 @@ class App extends React.Component {
         return <div className="project">digiiNote</div>;
       }
     } else {
-      return null;
+      return <div className="project directions">pick a planet</div>;
     }
   };
 
+  // callbacks
   bangInfo = () => {
     this.setState({ bangInitiated: true });
   };
@@ -98,7 +100,10 @@ class App extends React.Component {
   renderHeader = () => {
     if (!this.state.bangInitiated) {
       return (
-        <h1 className="heading-primary" style={{ fontWeight: '100' }}>
+        <h1
+          className="heading-primary"
+          style={{ fontWeight: '100', fontStyle: 'italic' }}
+        >
           Hello world!
         </h1>
       );
@@ -109,6 +114,7 @@ class App extends React.Component {
             <NavLink
               to="/personal-website"
               className={this.state.darkMode ? 'logo-link' : 'logo-link-light'}
+              onClick={() => this.setState({ onHomePage: true })}
             >
               <h1 className="heading-primary-appear">
                 James <span className="title-span">Draper</span>
@@ -116,7 +122,7 @@ class App extends React.Component {
             </NavLink>
           </div>
 
-          {this.renderTitle()}
+          {this.state.onHomePage ? this.renderTitle() : null}
 
           <ul className="navigation">
             <NavLink
@@ -125,6 +131,7 @@ class App extends React.Component {
               className={
                 this.state.darkMode ? 'header-link' : 'header-link-light'
               }
+              onClick={() => this.setState({ onHomePage: false })}
             >
               <li>About</li>
             </NavLink>
@@ -134,6 +141,7 @@ class App extends React.Component {
               className={
                 this.state.darkMode ? 'header-link' : 'header-link-light'
               }
+              onClick={() => this.setState({ onHomePage: false })}
             >
               <li>Contact</li>
             </NavLink>
@@ -183,7 +191,14 @@ class App extends React.Component {
           <Switch>
             <Route path="/personal-website" exact>
               <main>
-                <div className="grid-container">
+                <div
+                  className={
+                    this.state.darkMode
+                      ? 'grid-container'
+                      : 'grid-container-light'
+                  }
+                >
+                  {/* float 1, make responsive */}
                   <div
                     className={
                       this.state.darkMode
@@ -200,6 +215,7 @@ class App extends React.Component {
                       darkMode={this.state.darkMode}
                     />
                   </div>
+                  {/* float 2, make responsive */}
                   <div
                     className={
                       this.state.darkMode
@@ -220,7 +236,7 @@ class App extends React.Component {
             <Route
               path="/personal-website/contact"
               exact
-              component={Contact}
+              component={() => <Contact darkMode={this.state.darkMode} />}
             ></Route>
           </Switch>
         </Router>
