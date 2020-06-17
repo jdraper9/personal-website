@@ -223,18 +223,17 @@ class App extends React.Component {
               component={Contact}
             ></Route>
           </Switch>
-
-          <label htmlFor="toggle-1" className="light-dark">
-            <Toggle
-              name="toggle-1"
-              width="40px"
-              height="20px"
-              rightKnobColor="rgb(208, 179, 87)"
-              rightBorderColor="rgb(208, 179, 87)"
-              onToggle={() => this.setState({ darkMode: !this.state.darkMode })}
-            />
-          </label>
         </Router>
+        <label htmlFor="toggle-1" className="light-dark">
+          <Toggle
+            name="toggle-1"
+            width="40px"
+            height="20px"
+            rightKnobColor="rgb(208, 179, 87)"
+            rightBorderColor="rgb(208, 179, 87)"
+            onToggle={() => this.setState({ darkMode: !this.state.darkMode })}
+          />
+        </label>
       </div>
     );
   }

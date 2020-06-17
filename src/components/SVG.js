@@ -102,7 +102,6 @@ class Home extends React.Component {
   // when a planet group is clicked, zoom, etc. need clickedAndSelected in state so planets stop rotating
   select = () => {
     let clickedAndSelected = this.state.selected !== null ? true : false;
-    console.log(this.state.selected);
     this.setState({ clickedAndSelected, zoomedInOn: this.state.selected });
     // group of planet and satellites (outer, middle, inner) need coordinates, and largest radius of satellite
 
