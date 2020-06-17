@@ -67,7 +67,7 @@ textarea:focus {
   width: 80%;
   height: 15%;
   margin-bottom: 3%;
-  padding: 2%;
+  padding: 3%;
   border-radius: 4px;
   border: 1px solid rgba(0, 0, 0, 0.26);
 }
@@ -75,7 +75,8 @@ textarea:focus {
 .form-message {
   height: 25%;
   width: 80%;
-  padding: 2%;
+  padding: 3%;
+  padding-top: 4%;
   border-radius: 4px;
   resize: none;
   border: 1px solid rgba(0, 0, 0, 0.26);

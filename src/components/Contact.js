@@ -44,9 +44,19 @@ class Contact extends React.Component {
                 fontFamily: "'Orbitron', sans-serif",
                 letterSpacing: '.1em',
                 fontSize: '1.05rem',
+                overflow: 'auto',
               }}
             ></textarea>
-            <input className="form-submit" type="submit" value="send" />
+            <input
+              className="form-submit"
+              type="submit"
+              value="send"
+              style={{
+                fontFamily: "'Orbitron', sans-serif",
+                letterSpacing: '.15em',
+                color: 'rgba(0,0,0,.6)',
+              }}
+            />
           </form>
         </div>
       </div>
