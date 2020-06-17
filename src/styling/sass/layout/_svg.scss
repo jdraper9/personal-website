@@ -9,3 +9,7 @@
 .main-svg-light {
   background-color: $light-color-primary;
 }
+
+.intro-box {
+  animation: appear 1s ease-in-out;
+}

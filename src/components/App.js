@@ -5,7 +5,15 @@ import SVG from './SVG';
 import Float from './Float';
 import { floatDetail } from '../constants';
 
-import { BrowserRouter as Router, NavLink } from 'react-router-dom';
+import About from './About';
+import Contact from './Contact';
+
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  NavLink,
+} from 'react-router-dom';
 import { Toggle } from 'react-toggle-component';
 
 class App extends React.Component {
@@ -36,6 +44,8 @@ class App extends React.Component {
             darkMode={this.state.darkMode}
             side="left"
             info={floatInfo.left}
+            selected={this.state.zoomedOn}
+            updatePageCallback={this.updatePageChange}
           />
         );
       } else if (side === 'right') {
@@ -44,6 +54,8 @@ class App extends React.Component {
             darkMode={this.state.darkMode}
             side="right"
             info={floatInfo.right}
+            selected={this.state.zoomedOn}
+            updatePageCallback={this.updatePageChange}
           />
         );
       }
@@ -76,8 +88,11 @@ class App extends React.Component {
   };
 
   getZoomedOn = (dataFromSVG) => {
-    console.log(dataFromSVG);
     this.setState({ zoomedOn: dataFromSVG });
+  };
+
+  updatePageChange = () => {
+    this.setState({ zoomedOn: null });
   };
 
   renderHeader = () => {
@@ -163,49 +178,63 @@ class App extends React.Component {
           <div className={this.state.darkMode ? 'header' : 'header-light'}>
             <div className="inner-header">{this.renderHeader()}</div>
           </div>
+          <div className="spacer">&nbsp;</div>
+
+          <Switch>
+            <Route path="/personal-website" exact>
+              <main>
+                <div className="grid-container">
+                  <div
+                    className={
+                      this.state.darkMode
+                        ? 'floats col-1-of-3'
+                        : 'floats-light col-1-of-3'
+                    }
+                  >
+                    {this.renderFloat('left')}
+                  </div>
+                  <div className="svg-wrapper col-2-of-3">
+                    <SVG
+                      getZoomedOn={this.getZoomedOn}
+                      bangTrue={this.bangInfo}
+                      darkMode={this.state.darkMode}
+                    />
+                  </div>
+                  <div
+                    className={
+                      this.state.darkMode
+                        ? 'floats col-1-of-3 right'
+                        : 'floats-light col-1-of-3 right'
+                    }
+                  >
+                    {this.renderFloat('right')}
+                  </div>
+                </div>
+              </main>
+            </Route>
+            <Route
+              path="/personal-website/about"
+              exact
+              component={() => <About darkMode={this.state.darkMode} />}
+            ></Route>
+            <Route
+              path="/personal-website/contact"
+              exact
+              component={Contact}
+            ></Route>
+          </Switch>
+
+          <label htmlFor="toggle-1" className="light-dark">
+            <Toggle
+              name="toggle-1"
+              width="40px"
+              height="20px"
+              rightKnobColor="rgb(208, 179, 87)"
+              rightBorderColor="rgb(208, 179, 87)"
+              onToggle={() => this.setState({ darkMode: !this.state.darkMode })}
+            />
+          </label>
         </Router>
-
-        <div className="spacer">&nbsp;</div>
-        <main>
-          <div className="grid-container">
-            <div
-              className={
-                this.state.darkMode
-                  ? 'floats col-1-of-3'
-                  : 'floats-light col-1-of-3'
-              }
-            >
-              {this.renderFloat('left')}
-            </div>
-            <div className="svg-wrapper col-2-of-3">
-              <SVG
-                getZoomedOn={this.getZoomedOn}
-                bangTrue={this.bangInfo}
-                darkMode={this.state.darkMode}
-              />
-            </div>
-            <div
-              className={
-                this.state.darkMode
-                  ? 'floats col-1-of-3 right'
-                  : 'floats-light col-1-of-3 right'
-              }
-            >
-              {this.renderFloat('right')}
-            </div>
-          </div>
-        </main>
-
-        <label htmlFor="toggle-1" className="light-dark">
-          <Toggle
-            name="toggle-1"
-            width="40px"
-            height="20px"
-            rightKnobColor="rgb(208, 179, 87)"
-            rightBorderColor="rgb(208, 179, 87)"
-            onToggle={() => this.setState({ darkMode: !this.state.darkMode })}
-          />
-        </label>
       </div>
     );
   }

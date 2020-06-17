@@ -1,44 +1,54 @@
 import React from 'react';
 
-function Float(props) {
-  if (props.side === 'left') {
-    const stackItems = props.info.stack.map((stack, i) => (
-      <li key={i}>{stack}</li>
-    ));
+class Float extends React.Component {
+  componentWillUnmount() {
+    this.props.updatePageCallback();
+  }
 
-    return (
-      <div className="in-float">
-        <h2> About</h2>
-        <p className="u-margin-bottom-big">{props.info.about}</p>
-        <h2>Tech Stack</h2>
-        <ul className="lists">{stackItems}</ul>
-      </div>
-    );
-  } else if (props.side === 'right') {
-    const topicItems = props.info.topics.map((topic, i) => (
-      <li key={i}>{topic}</li>
-    ));
-    return (
-      <div className="in-float">
-        <h2>Topics</h2>
-        <ul className="lists u-margin-bottom-medium">{topicItems}</ul>
-        <h2>Code</h2>
-        <a
-          className={
-            props.darkMode
-              ? 'link u-margin-bottom-medium'
-              : 'link-light u-margin-bottom-medium'
-          }
-          href={props.info.github}
-          rel="noopener noreferrer"
-          target="_blank"
-        >
-          &#8627; Github
-        </a>
-        <h2>To visit</h2>
-        <p>Click on the 'planet'</p>
-      </div>
-    );
+  render() {
+    if (this.props.selected !== null) {
+      if (this.props.side === 'left') {
+        const stackItems = this.props.info.stack.map((stack, i) => (
+          <li key={i}>{stack}</li>
+        ));
+
+        return (
+          <div className="in-float">
+            <h2> About</h2>
+            <p className="u-margin-bottom-big">{this.props.info.about}</p>
+            <h2>Tech Stack</h2>
+            <ul className="lists">{stackItems}</ul>
+          </div>
+        );
+      } else if (this.props.side === 'right') {
+        const topicItems = this.props.info.topics.map((topic, i) => (
+          <li key={i}>{topic}</li>
+        ));
+        return (
+          <div className="in-float">
+            <h2>Topics</h2>
+            <ul className="lists u-margin-bottom-medium">{topicItems}</ul>
+            <h2>Code</h2>
+            <a
+              className={
+                this.props.darkMode
+                  ? 'link u-margin-bottom-medium'
+                  : 'link-light u-margin-bottom-medium'
+              }
+              href={this.props.info.github}
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              &#8627; Github
+            </a>
+            <h2>To visit</h2>
+            <p>Click on the 'planet'</p>
+          </div>
+        );
+      }
+    } else {
+      return <div></div>;
+    }
   }
 }
 

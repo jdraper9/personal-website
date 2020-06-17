@@ -130,3 +130,52 @@ export const floatDetail = {
     },
   },
 };
+
+export const _defaultState = {
+  rate: 7,
+  selected: null,
+  clickedAndSelected: false,
+  zoomTimer: 0,
+  zoomedIn: false,
+  zoomedInBox: null,
+  zoomBox: '210 210 80 80',
+  zoomedInOn: null,
+  orbitRingOpacity: 0,
+  notSunOpacity: 0,
+  sunOpacity: 0,
+  clickedOnSun: false,
+  explosionTimer: 0,
+  outer: {
+    r: 200,
+    theta: Math.random() * 6.27,
+    coordinates: { x: 250, y: 450 },
+    period: 4800,
+    satellites: satellite_init.outerSats,
+  },
+  middle: {
+    r: 130,
+    theta: Math.random() * 6.27,
+    coordinates: { x: 250, y: 125 },
+    period: 2900,
+    satellites: satellite_init.midSats,
+  },
+  inner: {
+    r: 60,
+    theta: Math.random() * 6.27,
+    coordinates: { x: 250, y: 300 },
+    period: 1500,
+    satellites: satellite_init.innerSats,
+  },
+  sun: {
+    coordinates: { x: 250, y: 250 },
+    satellites: { 3: { r: 30 } },
+  },
+  //
+  intro: true,
+  bangInitiated: false,
+  firstZoomOut: true,
+  shakeDistance: 0.5,
+  initial_particles: particles_init,
+  particleOpacity: 1,
+  //
+};

@@ -1,5 +1,10 @@
 import React from 'react';
-import { PI, satellite_init, particles_init } from '../constants';
+import {
+  PI,
+  satellite_init,
+  particles_init,
+  _defaultState,
+} from '../constants';
 
 class Home extends React.Component {
   intervalID = 0;
@@ -9,6 +14,8 @@ class Home extends React.Component {
 
   constructor(props) {
     super(props);
+
+    // this.state = _defaultState;
 
     // initial conditions for 'planets' and 'satellites'
 
@@ -58,13 +65,19 @@ class Home extends React.Component {
       shakeDistance: 0.5,
       initial_particles: particles_init,
       particleOpacity: 1,
-      //
     };
   }
 
-  componentDidMount() {
+  componentDidMount = () => {
     this.intervalID = setInterval(this.rotate, this.state.rate);
     this.wiggleIntervalID = setInterval(this.wiggle, this.state.shakeRate);
+  };
+
+  componentWillUnmount() {
+    clearInterval(this.intervalID);
+    clearInterval(this.zoomIntervalID);
+    clearInterval(this.wiggleIntervalID);
+    clearInterval(this.introOnClickIntervalID);
   }
 
   // onHover, slow rotation speed
@@ -89,6 +102,7 @@ class Home extends React.Component {
   // when a planet group is clicked, zoom, etc. need clickedAndSelected in state so planets stop rotating
   select = () => {
     let clickedAndSelected = this.state.selected !== null ? true : false;
+    console.log(this.state.selected);
     this.setState({ clickedAndSelected, zoomedInOn: this.state.selected });
     // group of planet and satellites (outer, middle, inner) need coordinates, and largest radius of satellite
 
@@ -427,7 +441,7 @@ class Home extends React.Component {
     }
     const initial_particles = this.state.initial_particles;
     const updatedParticles = {};
-    const updatedExplosionTimer = this.state.explosionTimer + 1 / 500;
+    const updatedExplosionTimer = this.state.explosionTimer + 1 / 250;
     for (const particle in initial_particles) {
       let x0 = initial_particles[particle].coordinates.x,
         x1 = initial_particles[particle].endPoint.x,
@@ -773,6 +787,7 @@ class Home extends React.Component {
           </g>
         </g>
         <g
+          className="intro-box"
           id="intro-and-sun"
           onMouseEnter={this.onSunHover}
           onMouseLeave={this.offSunHover}
