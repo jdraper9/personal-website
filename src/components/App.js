@@ -134,7 +134,7 @@ class App extends React.Component {
             {/* place hamburger */}
 
             <NavLink
-              to="/personal-website"
+              to="/"
               className={this.state.darkMode ? 'logo-link' : 'logo-link-light'}
               onClick={() => this.setState({ onHomePage: true })}
             >
@@ -149,7 +149,7 @@ class App extends React.Component {
           <ul className="navigation">
             <MediaQuery minWidth={1000}>
               <NavLink
-                to="/personal-website/about"
+                to="/about"
                 exact
                 className={
                   this.state.darkMode ? 'header-link' : 'header-link-light'
@@ -159,7 +159,7 @@ class App extends React.Component {
                 <li>About</li>
               </NavLink>
               <NavLink
-                to="/personal-website/contact"
+                to="/contact"
                 exact
                 className={
                   this.state.darkMode ? 'header-link' : 'header-link-light'
@@ -237,7 +237,7 @@ class App extends React.Component {
           {backdrop}
 
           <Switch>
-            <Route path="/personal-website" exact>
+            <Route path="/" exact>
               <main>
                 <div
                   className={
@@ -321,12 +321,12 @@ class App extends React.Component {
               </main>
             </Route>
             <Route
-              path="/personal-website/about"
+              path="/about"
               exact
               component={() => <About darkMode={this.state.darkMode} />}
             ></Route>
             <Route
-              path="/personal-website/contact"
+              path="/contact"
               exact
               component={() => <Contact darkMode={this.state.darkMode} />}
             ></Route>

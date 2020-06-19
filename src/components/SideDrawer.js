@@ -6,7 +6,7 @@ const sideDrawer = (props) => (
     <ul>
       <li>
         <NavLink
-          to="/personal-website/about"
+          to="/about"
           exact
           className="side-drawer-link"
           onClick={props.onHome}
@@ -16,7 +16,7 @@ const sideDrawer = (props) => (
       </li>
       <li>
         <NavLink
-          to="/personal-website/contact"
+          to="/contact"
           exact
           className="side-drawer-link"
           onClick={props.onHome}
