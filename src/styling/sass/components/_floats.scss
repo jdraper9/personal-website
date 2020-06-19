@@ -1,7 +1,7 @@
 .floats {
   display: flex;
   background-color: $color-primary;
-  padding: 8rem;
+  padding: 7rem;
   padding-top: 9rem;
   font-size: 1.3rem;
 
@@ -67,4 +67,25 @@
     font-size: 1rem;
     letter-spacing: 0.1em;
   }
+}
+
+.small-float {
+  text-align: left;
+  position: relative;
+  padding: 2% 10%;
+}
+
+.small-float-light {
+  text-align: left;
+  position: relative;
+  background-color: rgb(242, 233, 202);
+  padding: 2% 10%;
+}
+
+.small-float-light h2 {
+  color: $light-color-secondary;
+}
+
+.small-float-light {
+  color: $light-color-red;
 }

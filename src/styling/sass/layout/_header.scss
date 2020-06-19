@@ -69,6 +69,7 @@
   float: left;
   padding: 8px 20px;
   vertical-align: middle;
+  letter-spacing: 0.15em;
 }
 
 .header-link-light {
@@ -77,6 +78,7 @@
   float: left;
   padding: 8px 20px;
   vertical-align: middle;
+  letter-spacing: 0.15em;
 }
 
 .logo-link {
@@ -131,4 +133,14 @@
   padding-left: 5px;
   padding-right: 20px;
   animation: appear 5s ease-out;
+}
+
+@media (max-width: 420px) {
+  .hamburger {
+    display: table-cell;
+    padding-left: 2px;
+    padding-right: 15px;
+    padding-top: 7px;
+    animation: appear 5s ease-out;
+  }
 }

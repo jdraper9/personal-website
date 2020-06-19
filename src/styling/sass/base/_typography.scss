@@ -23,6 +23,13 @@ body {
   animation-fill-mode: forwards;
 }
 
+@media (max-width: 420px) {
+  .heading-primary-appear {
+    font-size: 1.4rem;
+    padding-top: 1px;
+  }
+}
+
 .heading-primary-disappear {
   text-transform: uppercase;
   animation: disappear 1s ease-out;

@@ -111,7 +111,10 @@ class App extends React.Component {
       return (
         <h1
           className="heading-primary"
-          style={{ fontWeight: '100', fontStyle: 'italic' }}
+          style={{
+            fontWeight: '200',
+            letterSpacing: '.3em',
+          }}
         >
           Hello world!
         </h1>
@@ -230,6 +233,7 @@ class App extends React.Component {
             show={this.state.sideDrawerOpen}
             onHome={this.onHomePage}
           />
+
           {backdrop}
 
           <Switch>
@@ -242,33 +246,77 @@ class App extends React.Component {
                       : 'grid-container-light'
                   }
                 >
-                  {/* float 1, make responsive */}
-                  <div
-                    className={
-                      this.state.darkMode
-                        ? 'floats col-1-of-3'
-                        : 'floats-light col-1-of-3'
-                    }
-                  >
-                    {this.renderFloat('left')}
-                  </div>
-                  <div className="svg-wrapper col-2-of-3">
-                    <SVG
-                      getZoomedOn={this.getZoomedOn}
-                      bangTrue={this.bangInfo}
-                      darkMode={this.state.darkMode}
-                    />
-                  </div>
-                  {/* float 2, make responsive */}
-                  <div
-                    className={
-                      this.state.darkMode
-                        ? 'floats col-1-of-3 right'
-                        : 'floats-light col-1-of-3 right'
-                    }
-                  >
-                    {this.renderFloat('right')}
-                  </div>
+                  {/* small size */}
+                  <MediaQuery maxWidth={1000}>
+                    <div className="svg-wrapper svg-col-large">
+                      <SVG
+                        getZoomedOn={this.getZoomedOn}
+                        bangTrue={this.bangInfo}
+                        darkMode={this.state.darkMode}
+                      />
+                    </div>
+
+                    <div className="small-below-SVG-box">
+                      <div
+                        className={
+                          this.state.darkMode
+                            ? 'small-float'
+                            : 'small-float-light'
+                        }
+                      >
+                        {this.renderFloat('left')}
+                      </div>
+                      <div
+                        className={
+                          this.state.darkMode
+                            ? 'small-float'
+                            : 'small-float-light'
+                        }
+                      >
+                        {this.renderFloat('right')}
+                      </div>
+                    </div>
+
+                    {this.state.zoomedOn && (
+                      <i
+                        class={
+                          this.state.darkMode
+                            ? 'fas fa-arrows-alt-v fa-2x scroll-arrows'
+                            : 'fas fa-arrows-alt-v fa-2x scroll-arrows-light'
+                        }
+                      ></i>
+                    )}
+                  </MediaQuery>
+
+                  {/* large size */}
+                  <MediaQuery minWidth={1000}>
+                    <div
+                      className={
+                        this.state.darkMode
+                          ? 'floats col-1-of-3'
+                          : 'floats-light col-1-of-3'
+                      }
+                    >
+                      {this.renderFloat('left')}
+                    </div>
+                    <div className="svg-wrapper col-2-of-3">
+                      <SVG
+                        getZoomedOn={this.getZoomedOn}
+                        bangTrue={this.bangInfo}
+                        darkMode={this.state.darkMode}
+                      />
+                    </div>
+                    {/* float 2, make responsive */}
+                    <div
+                      className={
+                        this.state.darkMode
+                          ? 'floats col-1-of-3 right'
+                          : 'floats-light col-1-of-3 right'
+                      }
+                    >
+                      {this.renderFloat('right')}
+                    </div>
+                  </MediaQuery>
                 </div>
               </main>
             </Route>

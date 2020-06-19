@@ -25,13 +25,39 @@
   margin: auto;
 }
 
-// media query:
-// at 1280px,
-//    change col-2 width to 60%, move info divs
-//    down
-//  at 900px,
-//    change col2- width to 65%;
-// at 700px,
-//    change col-2 width to 85%;
-// at 500px,
-//    change col-2 w to
+@media (min-width: 0px) and (max-width: 500px) {
+  .svg-col-large {
+    width: 100%;
+    margin: auto;
+  }
+}
+
+@media (min-width: 500px) and (max-width: 700px) {
+  .svg-col-large {
+    width: 85%;
+    margin: auto;
+  }
+}
+@media (min-width: 700px) and (max-width: 900px) {
+  .svg-col-large {
+    width: 65%;
+    margin: auto;
+  }
+}
+
+@media (min-width: 900px) and (max-width: 1280px) {
+  .svg-col-large {
+    width: 60%;
+    margin: auto;
+  }
+}
+
+.small-below-SVG-box {
+  position: absolute;
+  display: block;
+  bottom: 0;
+  height: 0px;
+  width: 100%;
+  text-align: center;
+  margin: auto;
+}
