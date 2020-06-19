@@ -9,13 +9,18 @@ class Float extends React.Component {
     if (this.props.selected !== null) {
       if (this.props.side === 'left') {
         const stackItems = this.props.info.stack.map((stack, i) => (
-          <li key={i}>{stack}</li>
+          <li className="list-item" key={i}>
+            {stack}
+          </li>
         ));
 
         return (
           <div className="in-float">
             <h2>About</h2>
-            <p className="u-margin-bottom-big" style={{ paddingLeft: '6px' }}>
+            <p
+              className="u-margin-bottom-big list-item"
+              style={{ paddingLeft: '6px' }}
+            >
               {this.props.info.about}
             </p>
             <h2>Tech Stack</h2>
@@ -26,7 +31,9 @@ class Float extends React.Component {
         );
       } else if (this.props.side === 'right') {
         const topicItems = this.props.info.topics.map((topic, i) => (
-          <li key={i}>{topic}</li>
+          <li className="list-item" key={i}>
+            {topic}
+          </li>
         ));
         return (
           <div className="in-float">
@@ -41,8 +48,8 @@ class Float extends React.Component {
             <a
               className={
                 this.props.darkMode
-                  ? 'link u-margin-bottom-medium'
-                  : 'link-light u-margin-bottom-medium'
+                  ? 'link u-margin-bottom-medium list-item'
+                  : 'link-light u-margin-bottom-medium list-item'
               }
               style={{ paddingRight: '9px' }}
               href={this.props.info.github}
@@ -52,7 +59,9 @@ class Float extends React.Component {
               &#8627; Github
             </a>
             <h2>To visit</h2>
-            <p style={{ paddingRight: '7px' }}>Click on the 'planet'</p>
+            <p className="list-item" style={{ paddingRight: '7px' }}>
+              Click on the 'planet'
+            </p>
           </div>
         );
       }

@@ -47,3 +47,24 @@
   margin: auto;
   letter-spacing: 0.05em;
 }
+
+@media (min-width: 1440px) {
+  .list-item {
+    font-size: 1.3rem;
+    letter-spacing: 0.1em;
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1440px) {
+  .list-item {
+    font-size: 1.15rem;
+    letter-spacing: 0.1em;
+  }
+}
+
+@media (min-width: 0px) and (max-width: 1200px) {
+  .list-item {
+    font-size: 1rem;
+    letter-spacing: 0.1em;
+  }
+}

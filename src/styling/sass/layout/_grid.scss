@@ -1,18 +1,16 @@
 .grid-container {
   display: flex;
-  height: 800 px;
 }
 
 .grid-container-light {
   background-color: rgb(241, 231, 203);
   display: flex;
-  height: 800 px;
 }
 
 // make this responsive
 .col-1-of-3 {
   width: 25.5%;
-  height: 700px;
+  height: 100vh;
   margin: auto;
 }
 
