@@ -484,7 +484,11 @@ class Home extends React.Component {
         >
           {/*  */}
 
-          <g id="outer">
+          <g
+            id="outer"
+            onMouseEnter={() => this.slow({ title: 'outer', rate: 60 })}
+            onMouseLeave={this.fast}
+          >
             <g id="outer-ring-3">
               <circle
                 cx={this.state.outer.coordinates.x}
@@ -584,7 +588,11 @@ class Home extends React.Component {
 
           {/*  */}
 
-          <g id="mid">
+          <g
+            id="mid"
+            onMouseEnter={() => this.slow({ title: 'middle', rate: 70 })}
+            onMouseLeave={this.fast}
+          >
             <g id="mid-ring-3">
               <circle
                 cx={this.state.middle.coordinates.x}
@@ -676,14 +684,16 @@ class Home extends React.Component {
               r="7"
               fill="#A54F00"
               opacity=".95"
-              onMouseEnter={() => this.slow({ title: 'middle', rate: 70 })}
-              onMouseLeave={this.fast}
             />
           </g>
 
           {/*  */}
 
-          <g id="center">
+          <g
+            id="center"
+            onMouseEnter={() => this.slow({ title: 'inner', rate: 90 })}
+            onMouseLeave={this.fast}
+          >
             <g id="in-ring-3">
               <circle
                 cx={this.state.inner.coordinates.x}
@@ -774,8 +784,6 @@ class Home extends React.Component {
               cy={this.state.inner.coordinates.y}
               r="6"
               fill="#177431"
-              onMouseEnter={() => this.slow({ title: 'inner', rate: 90 })}
-              onMouseLeave={this.fast}
               opacity=".95"
             />
           </g>
