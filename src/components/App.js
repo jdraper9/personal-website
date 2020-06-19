@@ -4,9 +4,12 @@ import '../styling/sass/main.scss';
 import SVG from './SVG';
 import Float from './Float';
 import { floatDetail } from '../constants';
+import MediaQuery from 'react-responsive';
 
 import About from './About';
 import Contact from './Contact';
+import SideDrawer from './SideDrawer';
+import Backdrop from './Backdrop';
 
 import {
   BrowserRouter as Router,
@@ -25,6 +28,7 @@ class App extends React.Component {
       bangInitiated: false,
       darkMode: true,
       onHomePage: true,
+      sideDrawerOpen: false,
     };
   }
 
@@ -70,7 +74,6 @@ class App extends React.Component {
       return "Welcome to James' Personal Site";
     }
 
-    // <div className="project">{this.renderTitle()}</div>
     if (this.state.zoomedOn !== null) {
       if (this.state.zoomedOn === 'inner') {
         return <div className="project">Resource Repository</div>;
@@ -97,6 +100,12 @@ class App extends React.Component {
     this.setState({ zoomedOn: null });
   };
 
+  onHomePage = () => {
+    this.setState({ onHomePage: false, sideDrawerOpen: false });
+  };
+
+  //
+
   renderHeader = () => {
     if (!this.state.bangInitiated) {
       return (
@@ -111,10 +120,16 @@ class App extends React.Component {
       return (
         <div>
           <div className="logo-container">
+            <MediaQuery maxWidth={1000}>
+              <div
+                onClick={this.drawerToggleClickHandler}
+                className="hamburger"
+              >
+                <i className="fas fa-bars fa-2x"></i>
+              </div>
+            </MediaQuery>
             {/* place hamburger */}
-            <div className="hamburger">
-              <i className="fas fa-bars fa-2x"></i>
-            </div>
+
             <NavLink
               to="/personal-website"
               className={this.state.darkMode ? 'logo-link' : 'logo-link-light'}
@@ -129,61 +144,79 @@ class App extends React.Component {
           {this.state.onHomePage ? this.renderTitle() : null}
 
           <ul className="navigation">
-            <NavLink
-              to="/personal-website/about"
-              exact
-              className={
-                this.state.darkMode ? 'header-link' : 'header-link-light'
-              }
-              onClick={() => this.setState({ onHomePage: false })}
-            >
-              <li>About</li>
-            </NavLink>
-            <NavLink
-              to="/personal-website/contact"
-              exact
-              className={
-                this.state.darkMode ? 'header-link' : 'header-link-light'
-              }
-              onClick={() => this.setState({ onHomePage: false })}
-            >
-              <li>Contact</li>
-            </NavLink>
-            <a
-              href="https://www.linkedin.com/in/james-draper/"
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              <i
-                className="fab fa-linkedin fa-lg header-link header-icon"
-                style={
-                  this.state.darkMode
-                    ? { color: '' }
-                    : { color: 'rgb(208, 179, 87)' }
+            <MediaQuery minWidth={1000}>
+              <NavLink
+                to="/personal-website/about"
+                exact
+                className={
+                  this.state.darkMode ? 'header-link' : 'header-link-light'
                 }
-              ></i>
-            </a>
-            <a
-              href="https://github.com/jdraper9"
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              <i
-                className="fab fa-github fa-lg header-link header-icon"
-                style={
-                  this.state.darkMode
-                    ? { color: '' }
-                    : { color: 'rgb(208, 179, 87)' }
+                onClick={() => this.setState({ onHomePage: false })}
+              >
+                <li>About</li>
+              </NavLink>
+              <NavLink
+                to="/personal-website/contact"
+                exact
+                className={
+                  this.state.darkMode ? 'header-link' : 'header-link-light'
                 }
-              ></i>
-            </a>
+                onClick={() => this.setState({ onHomePage: false })}
+              >
+                <li>Contact</li>
+              </NavLink>
+              <a
+                href="https://www.linkedin.com/in/james-draper/"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                <i
+                  className="fab fa-linkedin fa-lg header-link header-icon"
+                  style={
+                    this.state.darkMode
+                      ? { color: '' }
+                      : { color: 'rgb(208, 179, 87)' }
+                  }
+                ></i>
+              </a>
+              <a
+                href="https://github.com/jdraper9"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                <i
+                  className="fab fa-github fa-lg header-link header-icon"
+                  style={
+                    this.state.darkMode
+                      ? { color: '' }
+                      : { color: 'rgb(208, 179, 87)' }
+                  }
+                ></i>
+              </a>
+            </MediaQuery>
           </ul>
         </div>
       );
     }
   };
 
+  drawerToggleClickHandler = () => {
+    this.setState((prevState) => {
+      return { sideDrawerOpen: !prevState.sideDrawerOpen };
+    });
+  };
+
+  backdropClickHandler = () => {
+    this.setState({ sideDrawerOpen: false });
+  };
+
   render() {
+    let backdrop;
+
+    if (this.state.sideDrawerOpen) {
+      backdrop = <Backdrop click={this.backdropClickHandler} />;
+    }
+
     return (
       <div className={this.state.darkMode ? '' : 'body-light'}>
         <Router>
@@ -191,6 +224,13 @@ class App extends React.Component {
             <div className="inner-header">{this.renderHeader()}</div>
           </div>
           <div className="spacer">&nbsp;</div>
+
+          <SideDrawer
+            darkMode={this.state.darkMode}
+            show={this.state.sideDrawerOpen}
+            onHome={this.onHomePage}
+          />
+          {backdrop}
 
           <Switch>
             <Route path="/personal-website" exact>
