@@ -111,6 +111,10 @@ class App extends React.Component {
       return (
         <div>
           <div className="logo-container">
+            {/* place hamburger */}
+            <div className="hamburger">
+              <i className="fas fa-bars fa-2x"></i>
+            </div>
             <NavLink
               to="/personal-website"
               className={this.state.darkMode ? 'logo-link' : 'logo-link-light'}
